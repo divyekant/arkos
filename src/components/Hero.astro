@@ -13,6 +13,7 @@ import ParticleCanvas from './ParticleCanvas.astro';
 
   <div class="hero-content">
     <h1 class="shimmer-text">ARKOS</h1>
+    <p class="hero-value-prop">The open-source toolkit that handles everything around your code — testing, docs, memory, orchestration — so you ship faster.</p>
     <p class="hero-tagline">Tools forged for the age of AI-native development</p>
     <div class="hero-ctas">
       <a href="/tools/" class="cta cta-solid">Get Started</a>
@@ -47,13 +48,24 @@ import ParticleCanvas from './ParticleCanvas.astro';
     line-height: 1.1;
   }
 
+  .hero-value-prop {
+    color: var(--arkos-text, #e5e5e5);
+    font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+    text-wrap: balance;
+    margin: 0 auto 1.5rem;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
   .hero-tagline {
     color: var(--arkos-text-muted, #a3a3a3);
-    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     text-wrap: balance;
     margin: 0 0 2.5rem;
     max-width: 500px;
     margin-inline: auto;
+    font-style: italic;
+    letter-spacing: 0.02em;
   }
 
   .hero-ctas {

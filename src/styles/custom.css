@@ -37,3 +37,16 @@ header {
 a:hover {
   color: var(--arkos-gold-bright);
 }
+
+/* Starlight sidebar: selected item needs dark text on gold background */
+[data-theme='dark'] .sidebar-content a[aria-current='page'],
+[data-theme='dark'] nav.sidebar a[aria-current='page'],
+:root[data-theme='dark'] a[aria-current='page'] {
+  color: #0a0a0a !important;
+  font-weight: 600;
+}
+
+starlight-menu-button + nav a[aria-current='page'],
+.right-sidebar a[aria-current] {
+  color: #0a0a0a !important;
+}

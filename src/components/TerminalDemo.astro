@@ -145,6 +145,10 @@
 
     if (!typed || !cursor || !spinner || !output || !section) return;
 
+    // Prevent double-init if already ran
+    if (section.dataset.terminalInit === 'true') return;
+    section.dataset.terminalInit = 'true';
+
     let hasRun = false;
 
     const command = 'npx carto index .';
@@ -226,6 +230,7 @@
     observer.observe(section);
   }
 
-  document.addEventListener('DOMContentLoaded', initTerminalDemo);
+  // Use only astro:page-load (fires on initial load + transitions)
+  // Avoid DOMContentLoaded to prevent double-execution with ClientRouter
   document.addEventListener('astro:page-load', initTerminalDemo);
 </script>
