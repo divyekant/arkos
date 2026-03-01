@@ -3,6 +3,8 @@ title: SwarmEngine
 description: Multi-agent DAG orchestration engine for TypeScript
 ---
 
+> **GitHub:** [divyekant/swarm-engine](https://github.com/divyekant/swarm-engine)
+
 ## What it does
 
 SwarmEngine lets you define AI agents as nodes, wire them into directed acyclic graphs, and execute workflows with built-in cost tracking, streaming events, and pluggable adapters. It supports five execution patterns -- sequential pipelines, parallel fan-out/fan-in, conditional routing, iterative loops, and dynamic planning -- so you can model any multi-agent workflow as a typed DAG.

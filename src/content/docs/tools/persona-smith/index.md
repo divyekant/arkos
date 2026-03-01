@@ -3,6 +3,8 @@ title: PersonaSmith
 description: 75 research-backed AI agent personas across 15 enterprise departments
 ---
 
+> **GitHub:** [divyekant/PersonaSmith](https://github.com/divyekant/PersonaSmith)
+
 ## What it does
 
 PersonaSmith is a library of production-ready system prompts that turn AI agents into specialized enterprise professionals. Each persona is a self-contained Markdown file covering everything an agent needs to behave authentically in that role -- knowledge domains, decision frameworks, communication style, collaboration maps, constraints, and success metrics. Drop any persona into an agent's system prompt and it becomes that professional.

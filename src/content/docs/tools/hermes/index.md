@@ -3,6 +3,8 @@ title: Hermes
 description: Audience-specific documentation generation from a single codebase
 ---
 
+> **GitHub:** [divyekant/hermes](https://github.com/divyekant/hermes)
+
 ## What it does
 
 Software teams ship code, then the translation tax kicks in: support discovers features from customer questions, marketing reverse-engineers announcements from Slack threads, docs teams read raw code because nobody wrote it down. Hermes reads one source -- your code, docs, specs, and git history -- and generates structured documentation tailored for three distinct audiences with the right voice, structure, and depth for each.

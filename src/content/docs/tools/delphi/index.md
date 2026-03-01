@@ -3,6 +3,8 @@ title: Delphi
 description: Test scenario generation and execution for coding agents
 ---
 
+> **GitHub:** [divyekant/delphi](https://github.com/divyekant/delphi)
+
 ## What it does
 
 Coding agents build software, run unit tests, and call it done. But the gap between "tests pass" and "this actually works for users" is enormous. Delphi fills that gap by generating exhaustive test scenarios -- guided cases -- covering positive, negative, edge, accessibility, and security paths. It can then execute those cases automatically via browser automation or programmatic verification and produce evidence-backed reports.

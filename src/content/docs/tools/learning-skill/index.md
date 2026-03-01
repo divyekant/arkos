@@ -3,6 +3,8 @@ title: Learning
 description: Failure capture and cross-session learning for Claude Code
 ---
 
+> **GitHub:** [divyekant/learning-skill](https://github.com/divyekant/learning-skill)
+
 ## What it does
 
 Claude's context resets every session. When it spends 20 minutes debugging something, that knowledge is lost. The Learning skill makes Claude automatically record what went wrong and what fixed it, so it (or you) never repeats the same mistake. It captures failure-to-fix patterns in real time and retrieves relevant learnings at the start of new tasks.

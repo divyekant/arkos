@@ -3,6 +3,8 @@ title: Conductor
 description: Skill composition framework for Claude Code with configurable pipelines
 ---
 
+> **GitHub:** [divyekant/skill-conductor](https://github.com/divyekant/skill-conductor)
+
 ## What it does
 
 As the Claude Code skill ecosystem grows, you accumulate skills from different sources that conflict, lack sequencing, and require manual wiring. Conductor solves this by reading a `pipelines.yaml` config and routing your task through the right workflow -- classifying the task, selecting the pipeline, sequencing skills through ordered phases, and handling user overrides.

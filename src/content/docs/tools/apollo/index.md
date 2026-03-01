@@ -3,6 +3,8 @@ title: Apollo
 description: Agent-agnostic project lifecycle manager that enforces development conventions
 ---
 
+> **GitHub:** [divyekant/apollo](https://github.com/divyekant/apollo)
+
 ## What it does
 
 Apollo encodes your development preferences into a universal YAML config and enforces them by injecting rules into every coding agent's instruction file simultaneously. Whether you use Claude Code, Cursor, Codex, Copilot, Windsurf, or Aider, Apollo writes the same conventions to each agent's native format so your project standards are consistent everywhere.
