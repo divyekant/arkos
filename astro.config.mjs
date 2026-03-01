@@ -1,26 +1,61 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-		}),
-	],
+  site: 'https://arkos.divyekant.com',
+  integrations: [
+    starlight({
+      title: 'Arkos',
+      logo: {
+        src: './src/assets/arkos-logo.svg',
+        replacesTitle: true,
+      },
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/niceguy135' },
+      ],
+      sidebar: [
+        {
+          label: 'Tools',
+          items: [
+            { label: 'Overview', slug: 'tools/index' },
+            {
+              label: 'Infrastructure',
+              items: [
+                { slug: 'tools/memories/index' },
+                { slug: 'tools/carto/index' },
+                { slug: 'tools/swarm-engine/index' },
+              ],
+            },
+            {
+              label: 'Dev Workflow',
+              items: [
+                { slug: 'tools/conductor/index' },
+                { slug: 'tools/apollo/index' },
+                { slug: 'tools/delphi/index' },
+                { slug: 'tools/hermes/index' },
+                { slug: 'tools/learning-skill/index' },
+              ],
+            },
+            {
+              label: 'Agent Frameworks',
+              items: [
+                { slug: 'tools/persona-smith/index' },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Ecosystem',
+          autogenerate: { directory: 'ecosystem' },
+        },
+        {
+          label: 'About',
+          autogenerate: { directory: 'about' },
+        },
+      ],
+      customCss: [
+        './src/styles/custom.css',
+      ],
+    }),
+  ],
 });
