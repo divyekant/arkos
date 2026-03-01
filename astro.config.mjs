@@ -23,29 +23,29 @@ export default defineConfig({
         {
           label: 'Tools',
           items: [
-            { label: 'Overview', slug: 'tools/index' },
+            { label: 'Overview', slug: 'tools' },
             {
               label: 'Infrastructure',
               items: [
-                { slug: 'tools/memories/index' },
-                { slug: 'tools/carto/index' },
-                { slug: 'tools/swarm-engine/index' },
+                { slug: 'tools/memories' },
+                { slug: 'tools/carto' },
+                { slug: 'tools/swarm-engine' },
               ],
             },
             {
               label: 'Dev Workflow',
               items: [
-                { slug: 'tools/conductor/index' },
-                { slug: 'tools/apollo/index' },
-                { slug: 'tools/delphi/index' },
-                { slug: 'tools/hermes/index' },
-                { slug: 'tools/learning-skill/index' },
+                { slug: 'tools/conductor' },
+                { slug: 'tools/apollo' },
+                { slug: 'tools/delphi' },
+                { slug: 'tools/hermes' },
+                { slug: 'tools/learning-skill' },
               ],
             },
             {
               label: 'Agent Frameworks',
               items: [
-                { slug: 'tools/persona-smith/index' },
+                { slug: 'tools/persona-smith' },
               ],
             },
           ],
