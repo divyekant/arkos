@@ -1,0 +1,84 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  href: string;
+  category: string;
+  iconPath: string;
+}
+
+const { name, description, href, category, iconPath } = Astro.props;
+---
+
+<a href={href} class="tool-card glow-border spotlight-card holo-tilt cascade-item">
+  <span class="tool-category">{category}</span>
+  <div class="tool-icon-area">
+    <img src={iconPath} alt={`${name} icon`} width="40" height="40" />
+  </div>
+  <h3 class="tool-name">{name}</h3>
+  <p class="tool-description">{description}</p>
+  <span class="tool-link">Learn more &rarr;</span>
+</a>
+
+<style>
+  .tool-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--arkos-bg-elevated, #111111);
+    text-decoration: none;
+    color: var(--arkos-text, #e5e5e5);
+    min-height: 200px;
+    transition: transform 0.2s ease-out;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-4px);
+    color: var(--arkos-text, #e5e5e5);
+  }
+
+  .tool-category {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--arkos-gold, #d4af37);
+    margin-bottom: 0.75rem;
+  }
+
+  .tool-icon-area {
+    margin-bottom: 0.75rem;
+  }
+
+  .tool-icon-area img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .tool-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--arkos-text, #e5e5e5);
+    margin: 0 0 0.5rem;
+  }
+
+  .tool-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--arkos-text-muted, #a3a3a3);
+    margin: 0 0 auto;
+    padding-bottom: 1rem;
+  }
+
+  .tool-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--arkos-gold, #d4af37);
+    transition: color 0.2s ease;
+  }
+
+  .tool-card:hover .tool-link {
+    color: var(--arkos-gold-bright, #f5d060);
+  }
+</style>

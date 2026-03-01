@@ -1,0 +1,155 @@
+---
+import ToolCard from './ToolCard.astro';
+
+const tools = [
+  {
+    name: 'Apollo',
+    description: 'Project governance and conventions. Encodes your preferences into every agent\u2019s instruction file.',
+    category: 'Dev Workflow',
+    href: '/tools/apollo/',
+    iconPath: '/tool-icons/apollo.svg',
+  },
+  {
+    name: 'Hermes',
+    description: 'One codebase, three voices. Generates docs for internal teams, external users, and marketing.',
+    category: 'Dev Workflow',
+    href: '/tools/hermes/',
+    iconPath: '/tool-icons/hermes.svg',
+  },
+  {
+    name: 'Delphi',
+    description: 'The oracle for QA. Generates and executes guided test scenarios from your built software.',
+    category: 'Dev Workflow',
+    href: '/tools/delphi/',
+    iconPath: '/tool-icons/delphi.svg',
+  },
+  {
+    name: 'Carto',
+    description: 'Builds a 7-layer semantic map of your codebase. Intent-aware intelligence for AI assistants.',
+    category: 'Infrastructure',
+    href: '/tools/carto/',
+    iconPath: '/tool-icons/carto.svg',
+  },
+  {
+    name: 'Memories',
+    description: 'Persistent semantic memory. Hybrid search, sub-50ms latency, works across every AI coding tool.',
+    category: 'Infrastructure',
+    href: '/tools/memories/',
+    iconPath: '/tool-icons/memories.svg',
+  },
+  {
+    name: 'Conductor',
+    description: 'Orchestrates skills through pipelines. Classifies tasks, sequences phases, keeps everything in order.',
+    category: 'Dev Workflow',
+    href: '/tools/conductor/',
+    iconPath: '/tool-icons/conductor.svg',
+  },
+  {
+    name: 'SwarmEngine',
+    description: 'Multi-agent DAG orchestration. Sequential, parallel, conditional, iterative \u2014 with cost tracking.',
+    category: 'Infrastructure',
+    href: '/tools/swarm-engine/',
+    iconPath: '/tool-icons/swarm-engine.svg',
+  },
+  {
+    name: 'PersonaSmith',
+    description: '75 research-backed AI agent personas across 15 enterprise departments. Swarm-ready.',
+    category: 'Agent Framework',
+    href: '/tools/persona-smith/',
+    iconPath: '/tool-icons/persona-smith.svg',
+  },
+  {
+    name: 'Learning',
+    description: 'Auto-captures failures and fixes. Retrieves learnings to avoid repeating mistakes across sessions.',
+    category: 'Dev Workflow',
+    href: '/tools/learning-skill/',
+    iconPath: '/tool-icons/learning-skill.svg',
+  },
+];
+---
+
+<section class="showcase scroll-reveal">
+  <div class="showcase-inner">
+    <h2 class="showcase-heading">The Ecosystem</h2>
+    <p class="showcase-subtitle">Nine tools. One mission. Ship better software.</p>
+
+    <div class="showcase-grid">
+      {tools.map((tool) => (
+        <ToolCard
+          name={tool.name}
+          description={tool.description}
+          category={tool.category}
+          href={tool.href}
+          iconPath={tool.iconPath}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.spotlight-card').forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e as MouseEvent).clientX - rect.left;
+      const y = (e as MouseEvent).clientY - rect.top;
+      (card as HTMLElement).style.setProperty('--mouse-x', String(x));
+      (card as HTMLElement).style.setProperty('--mouse-y', String(y));
+      // Holographic tilt
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+      (card as HTMLElement).style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      (card as HTMLElement).style.transform = '';
+    });
+  });
+</script>
+
+<style>
+  .showcase {
+    position: relative;
+    padding: 6rem 2rem;
+    background-color: var(--arkos-bg, #0a0a0a);
+  }
+
+  .showcase-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .showcase-heading {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--arkos-text, #e5e5e5);
+    text-align: center;
+    margin: 0 0 0.75rem;
+  }
+
+  .showcase-subtitle {
+    font-size: 1.05rem;
+    color: var(--arkos-text-muted, #a3a3a3);
+    text-align: center;
+    margin: 0 0 3rem;
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 900px) {
+    .showcase-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .showcase-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
