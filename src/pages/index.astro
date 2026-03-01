@@ -1,0 +1,48 @@
+---
+import Hero from '../components/Hero.astro';
+import ProblemStatement from '../components/ProblemStatement.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arkos — Tools forged for the age of AI-native development</title>
+    <meta name="description" content="Arkos is a suite of AI-native developer tools that handle the other 80% — testing, documentation, memory, orchestration, and more." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style is:global>
+      @import '../styles/custom.css';
+      @import '../styles/aurora.css';
+      @import '../styles/grain.css';
+      @import '../styles/animations.css';
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--arkos-bg, #0a0a0a);
+        color: var(--arkos-text, #e5e5e5);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain-overlay">
+      <svg>
+        <filter id="grain-filter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain-filter)" />
+      </svg>
+    </div>
+
+    <Hero />
+    <ProblemStatement />
+  </body>
+</html>
