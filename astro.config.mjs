@@ -17,7 +17,7 @@ export default defineConfig({
         replacesTitle: true,
       },
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/niceguy135' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/divyekant/arkos' },
       ],
       sidebar: [
         {
