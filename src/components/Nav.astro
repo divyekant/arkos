@@ -1,0 +1,116 @@
+---
+// Nav.astro
+// Fixed glassmorphism navigation bar that appears after scrolling past the hero.
+---
+
+<div id="nav-sentinel" aria-hidden="true"></div>
+
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">ARKOS</a>
+    <div class="nav-links">
+      <a href="/tools/" class="nav-link">Docs</a>
+      <a href="https://github.com/niceguy135" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  #nav-sentinel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100vh;
+    pointer-events: none;
+  }
+
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    opacity: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    transition: opacity 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+    pointer-events: none;
+  }
+
+  .site-nav.visible {
+    opacity: 1;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(12px) brightness(0.8) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) brightness(0.8) saturate(150%);
+    border-bottom-color: var(--arkos-gold-muted, rgba(212, 175, 55, 0.08));
+    pointer-events: auto;
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
+  }
+
+  .nav-brand {
+    color: var(--arkos-gold, #d4af37);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-brand:hover {
+    color: var(--arkos-gold-bright, #f5d060);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    color: var(--arkos-text-muted, #a3a3a3);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--arkos-gold-bright, #f5d060);
+  }
+</style>
+
+<script>
+  function initNav() {
+    const nav = document.getElementById('site-nav');
+    const sentinel = document.getElementById('nav-sentinel');
+    if (!nav || !sentinel) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            nav.classList.remove('visible');
+          } else {
+            nav.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(sentinel);
+  }
+
+  document.addEventListener('DOMContentLoaded', initNav);
+  document.addEventListener('astro:page-load', initNav);
+</script>

@@ -1,7 +1,12 @@
 ---
+import { ClientRouter } from 'astro:transitions';
+import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import ProblemStatement from '../components/ProblemStatement.astro';
 import ToolShowcase from '../components/ToolShowcase.astro';
+import EcosystemDiagram from '../components/EcosystemDiagram.astro';
+import TerminalDemo from '../components/TerminalDemo.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <html lang="en">
@@ -11,6 +16,7 @@ import ToolShowcase from '../components/ToolShowcase.astro';
     <title>Arkos — Tools forged for the age of AI-native development</title>
     <meta name="description" content="Arkos is a suite of AI-native developer tools that handle the other 80% — testing, documentation, memory, orchestration, and more." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <ClientRouter />
     <style is:global>
       @import '../styles/custom.css';
       @import '../styles/aurora.css';
@@ -34,6 +40,8 @@ import ToolShowcase from '../components/ToolShowcase.astro';
     </style>
   </head>
   <body>
+    <Nav />
+
     <div class="grain-overlay">
       <svg>
         <filter id="grain-filter">
@@ -46,5 +54,8 @@ import ToolShowcase from '../components/ToolShowcase.astro';
     <Hero />
     <ProblemStatement />
     <ToolShowcase />
+    <EcosystemDiagram />
+    <TerminalDemo />
+    <Footer />
   </body>
 </html>

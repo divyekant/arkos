@@ -1,0 +1,141 @@
+---
+// Footer.astro
+// Clean, responsive footer with branding, navigation, and external links.
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-columns">
+      <div class="footer-brand">
+        <span class="footer-logo">Arkos</span>
+        <p class="footer-tagline">Tools forged for the age of AI-native development</p>
+      </div>
+
+      <div class="footer-links">
+        <h4 class="footer-links-heading">Navigation</h4>
+        <ul>
+          <li><a href="/tools/">Docs</a></li>
+          <li><a href="/ecosystem/">Ecosystem</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-external">
+        <h4 class="footer-links-heading">Connect</h4>
+        <ul>
+          <li><a href="https://github.com/niceguy135" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>Built with Astro + Starlight</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--arkos-bg, #0a0a0a);
+    border-top: 1px solid var(--arkos-gold-muted, rgba(212, 175, 55, 0.08));
+    padding: 3rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .footer-logo {
+    color: var(--arkos-gold, #d4af37);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-tagline {
+    color: var(--arkos-text-muted, #a3a3a3);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .footer-links,
+  .footer-external {
+    min-width: 120px;
+  }
+
+  .footer-links-heading {
+    color: var(--arkos-text, #e5e5e5);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-links ul,
+  .footer-external ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li,
+  .footer-external li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links a,
+  .footer-external a {
+    color: var(--arkos-text-muted, #a3a3a3);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover,
+  .footer-external a:hover {
+    color: var(--arkos-gold-bright, #f5d060);
+  }
+
+  .footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    text-align: center;
+  }
+
+  .footer-bottom span {
+    color: rgba(163, 163, 163, 0.4);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 640px) {
+    .footer-columns {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      text-align: center;
+    }
+
+    .footer-links,
+    .footer-external {
+      text-align: center;
+    }
+  }
+</style>

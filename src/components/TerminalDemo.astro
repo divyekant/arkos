@@ -1,0 +1,231 @@
+---
+// TerminalDemo.astro
+// Animated terminal that types a command and shows output when scrolled into view.
+---
+
+<section class="terminal-section scroll-reveal">
+  <div class="terminal-inner">
+    <h2 class="terminal-heading shimmer-text">Get Started</h2>
+    <p class="terminal-subtitle">One command to index your entire codebase.</p>
+
+    <div class="terminal-window">
+      <div class="terminal-chrome">
+        <span class="terminal-dot terminal-dot--red"></span>
+        <span class="terminal-dot terminal-dot--yellow"></span>
+        <span class="terminal-dot terminal-dot--green"></span>
+        <span class="terminal-title">terminal</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line terminal-prompt">
+          <span class="terminal-prefix">$ </span>
+          <span class="terminal-typed" id="terminal-typed"></span>
+          <span class="typing-cursor" id="terminal-cursor"></span>
+        </div>
+        <div class="terminal-line terminal-spinner" id="terminal-spinner" style="display:none;">
+          <span class="spinner-char"></span>
+        </div>
+        <div class="terminal-output" id="terminal-output"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .terminal-section {
+    position: relative;
+    padding: 5rem 1.5rem;
+    background: var(--arkos-bg, #0a0a0a);
+  }
+
+  .terminal-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .terminal-heading {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+
+  .terminal-subtitle {
+    color: var(--arkos-text-muted, #a3a3a3);
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    margin-bottom: 3rem;
+  }
+
+  .terminal-window {
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    border: 1px solid var(--arkos-gold-border, rgba(212, 175, 55, 0.15));
+  }
+
+  .terminal-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-dot--red { background: #ff5f57; }
+  .terminal-dot--yellow { background: #febc2e; }
+  .terminal-dot--green { background: #28c840; }
+
+  .terminal-title {
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--arkos-text-muted, #a3a3a3);
+    font-size: 0.8rem;
+    font-family: system-ui, sans-serif;
+    user-select: none;
+  }
+
+  .terminal-body {
+    padding: 1.5rem;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    min-height: 180px;
+  }
+
+  .terminal-line {
+    white-space: pre;
+  }
+
+  .terminal-prefix {
+    color: var(--arkos-text-muted, #a3a3a3);
+  }
+
+  .terminal-typed {
+    color: var(--arkos-text, #e5e5e5);
+  }
+
+  .terminal-spinner {
+    color: var(--arkos-gold, #d4af37);
+  }
+
+  .terminal-output {
+    margin-top: 0;
+  }
+
+  .terminal-output .output-line {
+    opacity: 0;
+    animation: output-appear 0.3s ease forwards;
+  }
+
+  .output-line .checkmark {
+    color: var(--arkos-gold, #d4af37);
+  }
+
+  @keyframes output-appear {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  function initTerminalDemo() {
+    const typed = document.getElementById('terminal-typed');
+    const cursor = document.getElementById('terminal-cursor');
+    const spinner = document.getElementById('terminal-spinner');
+    const output = document.getElementById('terminal-output');
+    const section = document.querySelector('.terminal-section');
+
+    if (!typed || !cursor || !spinner || !output || !section) return;
+
+    let hasRun = false;
+
+    const command = 'npx carto index .';
+    const spinnerFrames = ['\u280B', '\u2819', '\u2839', '\u2838', '\u283C', '\u2834', '\u2826', '\u2827', '\u2807', '\u280F'];
+    const outputLines = [
+      '  \u2713 Scanning 847 files...',
+      '  \u2713 Building 7-layer knowledge graph...',
+      '  \u2713 Index complete \u2014 12 modules mapped',
+    ];
+
+    function typeCommand(text: string, i: number): Promise<void> {
+      return new Promise((resolve) => {
+        if (i >= text.length) {
+          resolve();
+          return;
+        }
+        typed.textContent += text[i];
+        setTimeout(() => typeCommand(text, i + 1).then(resolve), 40);
+      });
+    }
+
+    function runSpinner(duration: number): Promise<void> {
+      return new Promise((resolve) => {
+        cursor.style.display = 'none';
+        spinner.style.display = 'block';
+        const charEl = spinner.querySelector('.spinner-char')!;
+        let frame = 0;
+        const interval = setInterval(() => {
+          charEl.textContent = '  ' + spinnerFrames[frame % spinnerFrames.length] + ' Indexing...';
+          frame++;
+        }, 80);
+        setTimeout(() => {
+          clearInterval(interval);
+          spinner.style.display = 'none';
+          resolve();
+        }, duration);
+      });
+    }
+
+    function showOutput(lines: string[], i: number): Promise<void> {
+      return new Promise((resolve) => {
+        if (i >= lines.length) {
+          resolve();
+          return;
+        }
+        const div = document.createElement('div');
+        div.className = 'output-line terminal-line';
+        // Wrap checkmark in span for gold color
+        div.innerHTML = lines[i].replace('\u2713', '<span class="checkmark">\u2713</span>');
+        output.appendChild(div);
+        setTimeout(() => showOutput(lines, i + 1).then(resolve), 300);
+      });
+    }
+
+    async function runSequence() {
+      if (hasRun) return;
+      hasRun = true;
+
+      await typeCommand(command, 0);
+      await runSpinner(1500);
+      await showOutput(outputLines, 0);
+
+      // Hide cursor after completion
+      if (cursor) cursor.style.display = 'none';
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasRun) {
+            runSequence();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(section);
+  }
+
+  document.addEventListener('DOMContentLoaded', initTerminalDemo);
+  document.addEventListener('astro:page-load', initTerminalDemo);
+</script>
