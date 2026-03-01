@@ -30,6 +30,7 @@ export default defineConfig({
                 { slug: 'tools/memories' },
                 { slug: 'tools/carto' },
                 { slug: 'tools/swarm-engine' },
+                { slug: 'tools/deck' },
               ],
             },
             {

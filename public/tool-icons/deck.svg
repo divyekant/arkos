@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Monitor/dashboard screen -->
+  <rect x="2" y="3" width="20" height="14" rx="2"/>
+  <!-- Screen stand -->
+  <path d="M8 21h8"/>
+  <path d="M12 17v4"/>
+  <!-- Dashboard elements: bar chart -->
+  <path d="M6 13v-2"/>
+  <path d="M9 13v-4"/>
+  <path d="M12 13v-3"/>
+  <path d="M15 13v-5"/>
+  <!-- Signal dot -->
+  <circle cx="18" cy="7" r="1" fill="#d4af37"/>
+</svg>
