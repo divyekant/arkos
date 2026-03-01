@@ -1,0 +1,135 @@
+/* Metallic shimmer for gold text */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #d4af37 0%,
+    #f5d060 25%,
+    #fffbe6 50%,
+    #f5d060 75%,
+    #d4af37 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 200% center; }
+  50% { background-position: -200% center; }
+}
+
+/* Scroll-driven fade-in-up */
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: fade-in-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .cascade-item:nth-child(1) { animation-range: entry 0% entry 80%; }
+  .cascade-item:nth-child(2) { animation-range: entry 5% entry 85%; }
+  .cascade-item:nth-child(3) { animation-range: entry 10% entry 90%; }
+  .cascade-item:nth-child(4) { animation-range: entry 15% entry 95%; }
+  .cascade-item:nth-child(5) { animation-range: entry 20% entry 100%; }
+  .cascade-item:nth-child(6) { animation-range: entry 25% entry 100%; }
+  .cascade-item:nth-child(7) { animation-range: entry 30% entry 100%; }
+  .cascade-item:nth-child(8) { animation-range: entry 35% entry 100%; }
+  .cascade-item:nth-child(9) { animation-range: entry 40% entry 100%; }
+}
+
+@supports not (animation-timeline: view()) {
+  .scroll-reveal,
+  .cascade-item {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Rotating border glow for cards */
+@property --border-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: "<angle>";
+}
+
+@keyframes rotate-border {
+  to { --border-angle: 360deg; }
+}
+
+.glow-border {
+  background:
+    linear-gradient(var(--arkos-bg-elevated, #111111), var(--arkos-bg-elevated, #111111)) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #d4af37,
+      transparent 40%,
+      transparent 60%,
+      #d4af37
+    ) border-box;
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  animation: rotate-border 4s linear infinite;
+}
+
+/* Gold cursor spotlight */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::after {
+  content: '';
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  opacity: 0;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.2),
+    transparent 70%
+  );
+  transition: opacity 0.3s;
+  top: calc(var(--mouse-y, 0) * 1px - 125px);
+  left: calc(var(--mouse-x, 0) * 1px - 125px);
+  pointer-events: none;
+}
+
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+/* Holographic tilt */
+.holo-tilt {
+  transition: transform 0.2s ease-out;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/* Typing cursor blink */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: var(--arkos-gold, #d4af37);
+  animation: cursor-blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}

@@ -1,1 +1,39 @@
-/* Arkos brand overrides for Starlight */
+/* Arkos Brand Overrides for Starlight */
+
+:root {
+  --arkos-gold: #d4af37;
+  --arkos-gold-bright: #f5d060;
+  --arkos-gold-highlight: #fffbe6;
+  --arkos-gold-muted: rgba(212, 175, 55, 0.08);
+  --arkos-gold-border: rgba(212, 175, 55, 0.15);
+  --arkos-bg: #0a0a0a;
+  --arkos-bg-elevated: #111111;
+  --arkos-text: #e5e5e5;
+  --arkos-text-muted: #a3a3a3;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-bg: var(--arkos-bg);
+  --sl-color-bg-nav: rgba(10, 10, 10, 0.8);
+  --sl-color-bg-sidebar: var(--arkos-bg);
+  --sl-color-text: var(--arkos-text);
+  --sl-color-text-accent: var(--arkos-gold);
+  --sl-color-accent-high: var(--arkos-gold-bright);
+  --sl-color-accent: var(--arkos-gold);
+  --sl-color-accent-low: rgba(212, 175, 55, 0.15);
+  --sl-color-hairline: var(--arkos-gold-muted);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+header {
+  backdrop-filter: blur(12px) brightness(0.8) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) brightness(0.8) saturate(150%);
+  border-bottom: 1px solid var(--arkos-gold-muted);
+}
+
+a:hover {
+  color: var(--arkos-gold-bright);
+}

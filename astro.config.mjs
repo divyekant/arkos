@@ -55,6 +55,9 @@ export default defineConfig({
       ],
       customCss: [
         './src/styles/custom.css',
+        './src/styles/aurora.css',
+        './src/styles/grain.css',
+        './src/styles/animations.css',
       ],
     }),
   ],
