@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Envelope body -->
+  <rect x="3" y="6" width="18" height="13" rx="1"/>
+  <!-- Envelope flap -->
+  <path d="M3 7l9 6 9-6"/>
+  <!-- Left wing -->
+  <path d="M3 10l-2-3 3-2 2 3"/>
+  <!-- Right wing -->
+  <path d="M21 10l2-3-3-2-2 3"/>
+</svg>

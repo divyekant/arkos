@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Compass rose: outer circle -->
+  <circle cx="12" cy="12" r="10"/>
+  <!-- Cardinal points N/S/E/W -->
+  <path d="M12 2l-2 6h4l-2-6z"/>
+  <path d="M12 22l2-6h-4l2 6z"/>
+  <path d="M22 12l-6-2v4l6-2z"/>
+  <path d="M2 12l6 2v-4l-6 2z"/>
+  <!-- Center dot -->
+  <circle cx="12" cy="12" r="1.5"/>
+</svg>
