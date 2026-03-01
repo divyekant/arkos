@@ -1,0 +1,317 @@
+---
+// EcosystemDiagram.astro
+// Animated SVG showing how all 9 Arkos tools connect, with Conductor at the center.
+
+const tools = [
+  { id: 'conductor', label: 'Conductor', letter: 'C', x: 400, y: 250, r: 35, primary: true },
+  { id: 'apollo', label: 'Apollo', letter: 'A', x: 150, y: 100, r: 30, primary: false },
+  { id: 'hermes', label: 'Hermes', letter: 'H', x: 650, y: 100, r: 30, primary: false },
+  { id: 'delphi', label: 'Delphi', letter: 'D', x: 700, y: 250, r: 30, primary: false },
+  { id: 'carto', label: 'Carto', letter: 'C', x: 600, y: 400, r: 30, primary: false },
+  { id: 'memories', label: 'Memories', letter: 'M', x: 400, y: 430, r: 30, primary: false },
+  { id: 'swarmengine', label: 'SwarmEngine', letter: 'S', x: 200, y: 400, r: 30, primary: false },
+  { id: 'personasmith', label: 'PersonaSmith', letter: 'P', x: 100, y: 250, r: 30, primary: false },
+  { id: 'learning', label: 'Learning', letter: 'L', x: 400, y: 70, r: 30, primary: false },
+];
+
+const connections = [
+  { from: 'conductor', to: 'apollo', duration: '3s' },
+  { from: 'conductor', to: 'hermes', duration: '2.5s' },
+  { from: 'conductor', to: 'delphi', duration: '3.2s' },
+  { from: 'conductor', to: 'learning', duration: '2.8s' },
+  { from: 'conductor', to: 'swarmengine', duration: '3.5s' },
+  { from: 'apollo', to: 'carto', duration: '2.3s' },
+  { from: 'carto', to: 'memories', duration: '3.8s' },
+  { from: 'delphi', to: 'hermes', duration: '2.6s' },
+  { from: 'swarmengine', to: 'personasmith', duration: '3.1s' },
+  { from: 'swarmengine', to: 'memories', duration: '2.9s' },
+];
+
+// Build a lookup for tool positions
+const toolMap = Object.fromEntries(tools.map(t => [t.id, t]));
+---
+
+<section class="ecosystem-section scroll-reveal">
+  <div class="ecosystem-inner">
+    <h2 class="ecosystem-heading shimmer-text">How It All Connects</h2>
+    <p class="ecosystem-subtitle">Conductor orchestrates. Tools specialize. Memory persists.</p>
+
+    <div class="ecosystem-diagram-wrap">
+      <svg
+        class="ecosystem-svg"
+        viewBox="0 0 800 500"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Ecosystem diagram showing how Arkos tools connect"
+      >
+        <defs>
+          {connections.map((conn, i) => (
+            <linearGradient
+              id={`grad-${conn.from}-${conn.to}`}
+              x1={toolMap[conn.from].x}
+              y1={toolMap[conn.from].y}
+              x2={toolMap[conn.to].x}
+              y2={toolMap[conn.to].y}
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0%" stop-color="rgba(212, 175, 55, 0.5)" />
+              <stop offset="50%" stop-color="rgba(212, 175, 55, 0.3)" />
+              <stop offset="100%" stop-color="rgba(212, 175, 55, 0.5)" />
+            </linearGradient>
+          ))}
+        </defs>
+
+        {/* Connection lines */}
+        <g class="connections-group">
+          {connections.map((conn) => {
+            const fromTool = toolMap[conn.from];
+            const toTool = toolMap[conn.to];
+            return (
+              <line
+                class="eco-connection"
+                data-from={conn.from}
+                data-to={conn.to}
+                x1={fromTool.x}
+                y1={fromTool.y}
+                x2={toTool.x}
+                y2={toTool.y}
+                stroke={`url(#grad-${conn.from}-${conn.to})`}
+                stroke-width="1"
+                stroke-dasharray="6 4"
+                style={`animation-duration: ${conn.duration};`}
+              />
+            );
+          })}
+        </g>
+
+        {/* Tool nodes */}
+        {tools.map((tool) => (
+          <g
+            class={`eco-node ${tool.primary ? 'eco-node--primary' : ''}`}
+            data-tool={tool.id}
+          >
+            <circle
+              cx={tool.x}
+              cy={tool.y}
+              r={tool.r}
+              class="eco-node-circle"
+            />
+            <text
+              x={tool.x}
+              y={tool.y + 5}
+              class="eco-node-letter"
+              text-anchor="middle"
+              dominant-baseline="middle"
+            >
+              {tool.letter}
+            </text>
+            <text
+              x={tool.x}
+              y={tool.y + tool.r + 16}
+              class="eco-node-label"
+              text-anchor="middle"
+            >
+              {tool.label}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ecosystem-section {
+    position: relative;
+    padding: 5rem 1.5rem;
+    background: var(--arkos-bg, #0a0a0a);
+  }
+
+  .ecosystem-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .ecosystem-heading {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+
+  .ecosystem-subtitle {
+    color: var(--arkos-text-muted, #a3a3a3);
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    margin-bottom: 3rem;
+  }
+
+  .ecosystem-diagram-wrap {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .ecosystem-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Connection lines */
+  .eco-connection {
+    animation: dash-flow linear infinite;
+    transition: opacity 0.3s ease, stroke-width 0.3s ease;
+  }
+
+  @keyframes dash-flow {
+    from { stroke-dashoffset: 20; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Node circles */
+  .eco-node-circle {
+    fill: var(--arkos-bg, #0a0a0a);
+    stroke: var(--arkos-gold, #d4af37);
+    stroke-width: 1.5;
+    transition: stroke 0.3s ease, stroke-width 0.3s ease, r 0.3s ease;
+  }
+
+  .eco-node--primary .eco-node-circle {
+    stroke: var(--arkos-gold-bright, #f5d060);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.25));
+  }
+
+  /* Pulse animation on nodes */
+  .eco-node {
+    animation: node-pulse 3s ease-in-out infinite;
+    transform-origin: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Stagger the pulse across tools */
+  .eco-node:nth-child(1) { animation-delay: 0s; }
+  .eco-node:nth-child(2) { animation-delay: 0.3s; }
+  .eco-node:nth-child(3) { animation-delay: 0.6s; }
+  .eco-node:nth-child(4) { animation-delay: 0.9s; }
+  .eco-node:nth-child(5) { animation-delay: 1.2s; }
+  .eco-node:nth-child(6) { animation-delay: 1.5s; }
+  .eco-node:nth-child(7) { animation-delay: 1.8s; }
+  .eco-node:nth-child(8) { animation-delay: 2.1s; }
+  .eco-node:nth-child(9) { animation-delay: 2.4s; }
+
+  @keyframes node-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+
+  /* Node letter */
+  .eco-node-letter {
+    fill: var(--arkos-gold, #d4af37);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, sans-serif;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .eco-node--primary .eco-node-letter {
+    font-size: 16px;
+    fill: var(--arkos-gold-bright, #f5d060);
+  }
+
+  /* Node label */
+  .eco-node-label {
+    fill: var(--arkos-text, #e5e5e5);
+    font-size: 11px;
+    font-family: system-ui, -apple-system, sans-serif;
+    pointer-events: none;
+    user-select: none;
+    transition: fill 0.3s ease;
+  }
+
+  /* Hover states: dimmed */
+  .eco-node.dimmed {
+    opacity: 0.2;
+  }
+
+  .eco-connection.dimmed {
+    opacity: 0.08;
+  }
+
+  /* Hover states: active */
+  .eco-node.active .eco-node-circle {
+    stroke: var(--arkos-gold-bright, #f5d060);
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+  }
+
+  .eco-node.active .eco-node-label {
+    fill: var(--arkos-gold-bright, #f5d060);
+  }
+
+  .eco-connection.active {
+    opacity: 1;
+    stroke-width: 2;
+  }
+</style>
+
+<script>
+  function initEcosystemDiagram() {
+    const svg = document.querySelector('.ecosystem-svg');
+    if (!svg) return;
+
+    const nodes = svg.querySelectorAll<SVGGElement>('.eco-node');
+    const lines = svg.querySelectorAll<SVGLineElement>('.eco-connection');
+
+    function clearStates() {
+      nodes.forEach(n => {
+        n.classList.remove('active', 'dimmed');
+      });
+      lines.forEach(l => {
+        l.classList.remove('active', 'dimmed');
+      });
+    }
+
+    nodes.forEach(node => {
+      const toolId = node.getAttribute('data-tool');
+      if (!toolId) return;
+
+      node.addEventListener('mouseenter', () => {
+        // Find all connections that include this tool
+        const connectedTools = new Set<string>([toolId]);
+
+        lines.forEach(line => {
+          const from = line.getAttribute('data-from');
+          const to = line.getAttribute('data-to');
+          if (from === toolId || to === toolId) {
+            line.classList.add('active');
+            if (from) connectedTools.add(from);
+            if (to) connectedTools.add(to);
+          } else {
+            line.classList.add('dimmed');
+          }
+        });
+
+        nodes.forEach(n => {
+          const nId = n.getAttribute('data-tool');
+          if (nId && connectedTools.has(nId)) {
+            n.classList.add('active');
+          } else {
+            n.classList.add('dimmed');
+          }
+        });
+      });
+
+      node.addEventListener('mouseleave', () => {
+        clearStates();
+      });
+    });
+  }
+
+  // Run on initial load and after Astro view transitions
+  document.addEventListener('DOMContentLoaded', initEcosystemDiagram);
+  document.addEventListener('astro:page-load', initEcosystemDiagram);
+</script>
