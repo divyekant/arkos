@@ -24,6 +24,9 @@ import Footer from '../components/Footer.astro';
     <meta name="twitter:description" content="Open-source toolkit for testing, docs, memory, and orchestration. The other 80% of shipping software." />
     <link rel="canonical" href="https://arkos.divyekant.com" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <ClientRouter />
     <style is:global>
       @import '../styles/custom.css';
@@ -40,7 +43,7 @@ import Footer from '../components/Footer.astro';
       body {
         background: var(--arkos-bg, #0a0a0a);
         color: var(--arkos-text, #e5e5e5);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
