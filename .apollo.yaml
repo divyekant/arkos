@@ -1,0 +1,16 @@
+# Apollo Project Config — Arkos Brand Site
+extends: oss
+version: 0.1.0
+
+# Override: npm instead of bun (Astro ecosystem standard)
+stack:
+  package_manager: npm
+
+# Dev environment
+dev:
+  runtime: local
+  commands:
+    start: "npm run dev"
+    build: "npm run build"
+    preview: "npm run preview"
+    test: "npx vitest run"
