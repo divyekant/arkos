@@ -1,11 +1,17 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import arkosTheme from './src/themes/arkos-shiki.json';
 
 export default defineConfig({
   site: 'https://arkos.divyekant.com',
   integrations: [
     starlight({
       title: 'Arkos',
+      expressiveCode: {
+        themes: [arkosTheme],
+        useStarlightDarkModeSwitch: false,
+        useStarlightUiThemeColors: false,
+      },
       logo: {
         src: './src/assets/arkos-logo.svg',
         replacesTitle: true,
