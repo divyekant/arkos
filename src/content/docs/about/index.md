@@ -41,4 +41,4 @@ To contribute:
 
 ## Built By
 
-Arkos is built by [Divyekant](https://github.com/niceguy135) — a developer tools enthusiast focused on the intersection of AI and software development workflows.
+Arkos is built by [Divyekant](https://github.com/divyekant) — a developer tools enthusiast focused on the intersection of AI and software development workflows.
