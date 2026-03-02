@@ -1,10 +1,12 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import react from '@astrojs/react';
 import arkosTheme from './src/themes/arkos-shiki.json';
 
 export default defineConfig({
   site: 'https://arkos.divyekant.com',
   integrations: [
+    react(),
     starlight({
       title: 'Arkos',
       expressiveCode: {
