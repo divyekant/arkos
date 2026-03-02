@@ -11,13 +11,111 @@ import ParticleCanvas from './ParticleCanvas.astro';
 
   <ParticleCanvas />
 
-  <div class="hero-content">
-    <h1 class="shimmer-text">ARKOS</h1>
-    <p class="hero-value-prop">The open-source toolkit that handles everything around your code — testing, docs, memory, orchestration — so you ship faster.</p>
-    <p class="hero-tagline">Tools forged for the age of AI-native development</p>
-    <div class="hero-ctas">
-      <a href="/tools/" class="cta cta-solid">Get Started</a>
-      <a href="https://github.com/divyekant/arkos" class="cta cta-ghost" target="_blank" rel="noopener">View on GitHub</a>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <h1 class="shimmer-text">ARKOS</h1>
+      <p class="hero-headline">The other 80% of shipping software.</p>
+      <p class="hero-value-prop">Open-source tools for testing, docs, memory, and orchestration — everything around your code that AI agents still can't handle alone.</p>
+      <div class="hero-ctas">
+        <a href="/tools/" class="cta cta-solid">Get Started</a>
+        <a href="https://github.com/divyekant/arkos" class="cta cta-ghost" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <svg class="ecosystem-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Connection lines (drawn first, behind nodes) -->
+        <g class="eco-lines" stroke="rgba(212,175,55,0.15)" stroke-width="1">
+          <!-- Memories hub connections -->
+          <line x1="200" y1="200" x2="200" y2="60"/>
+          <line x1="200" y1="200" x2="330" y2="105"/>
+          <line x1="200" y1="200" x2="330" y2="295"/>
+          <line x1="200" y1="200" x2="200" y2="340"/>
+          <line x1="200" y1="200" x2="70" y2="295"/>
+          <line x1="200" y1="200" x2="70" y2="105"/>
+          <!-- Outer ring connections -->
+          <line x1="200" y1="60" x2="330" y2="105"/>
+          <line x1="330" y1="105" x2="330" y2="295"/>
+          <line x1="330" y1="295" x2="200" y2="340"/>
+          <line x1="200" y1="340" x2="70" y2="295"/>
+          <line x1="70" y1="295" x2="70" y2="105"/>
+          <line x1="70" y1="105" x2="200" y2="60"/>
+          <!-- Cross connections -->
+          <line x1="70" y1="105" x2="330" y2="295"/>
+          <line x1="330" y1="105" x2="70" y2="295"/>
+        </g>
+
+        <!-- Animated pulse lines -->
+        <g class="eco-pulse-lines">
+          <line x1="200" y1="200" x2="200" y2="60" stroke="rgba(212,175,55,0.4)" stroke-width="1.5" class="pulse-line pulse-1"/>
+          <line x1="200" y1="200" x2="330" y2="105" stroke="rgba(212,175,55,0.4)" stroke-width="1.5" class="pulse-line pulse-2"/>
+          <line x1="200" y1="200" x2="330" y2="295" stroke="rgba(212,175,55,0.4)" stroke-width="1.5" class="pulse-line pulse-3"/>
+          <line x1="200" y1="200" x2="70" y2="295" stroke="rgba(212,175,55,0.4)" stroke-width="1.5" class="pulse-line pulse-4"/>
+          <line x1="200" y1="200" x2="70" y2="105" stroke="rgba(212,175,55,0.4)" stroke-width="1.5" class="pulse-line pulse-5"/>
+          <line x1="200" y1="200" x2="200" y2="340" stroke="rgba(212,175,55,0.4)" stroke-width="1.5" class="pulse-line pulse-6"/>
+        </g>
+
+        <!-- Center node: Memories -->
+        <g class="eco-node node-center">
+          <circle cx="200" cy="200" r="32" fill="rgba(212,175,55,0.08)" stroke="rgba(212,175,55,0.5)" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="32" fill="none" stroke="rgba(212,175,55,0.2)" stroke-width="1" class="node-pulse"/>
+          <text x="200" y="196" text-anchor="middle" fill="#d4af37" font-size="11" font-weight="600" font-family="Inter, sans-serif">Memories</text>
+          <text x="200" y="212" text-anchor="middle" fill="rgba(212,175,55,0.5)" font-size="8" font-family="Inter, sans-serif">core</text>
+        </g>
+
+        <!-- Outer nodes -->
+        <g class="eco-node node-outer">
+          <circle cx="200" cy="60" r="26" fill="rgba(212,175,55,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+          <text x="200" y="57" text-anchor="middle" fill="#e5e5e5" font-size="10" font-weight="500" font-family="Inter, sans-serif">Carto</text>
+          <text x="200" y="70" text-anchor="middle" fill="rgba(229,229,229,0.4)" font-size="7" font-family="Inter, sans-serif">indexing</text>
+        </g>
+
+        <g class="eco-node node-outer">
+          <circle cx="330" cy="105" r="26" fill="rgba(212,175,55,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+          <text x="330" y="102" text-anchor="middle" fill="#e5e5e5" font-size="10" font-weight="500" font-family="Inter, sans-serif">SwarmEngine</text>
+          <text x="330" y="115" text-anchor="middle" fill="rgba(229,229,229,0.4)" font-size="7" font-family="Inter, sans-serif">orchestration</text>
+        </g>
+
+        <g class="eco-node node-outer">
+          <circle cx="330" cy="295" r="26" fill="rgba(212,175,55,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+          <text x="330" y="292" text-anchor="middle" fill="#e5e5e5" font-size="10" font-weight="500" font-family="Inter, sans-serif">Delphi</text>
+          <text x="330" y="305" text-anchor="middle" fill="rgba(229,229,229,0.4)" font-size="7" font-family="Inter, sans-serif">testing</text>
+        </g>
+
+        <g class="eco-node node-outer">
+          <circle cx="200" cy="340" r="26" fill="rgba(212,175,55,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+          <text x="200" y="337" text-anchor="middle" fill="#e5e5e5" font-size="10" font-weight="500" font-family="Inter, sans-serif">Deck</text>
+          <text x="200" y="350" text-anchor="middle" fill="rgba(229,229,229,0.4)" font-size="7" font-family="Inter, sans-serif">analytics</text>
+        </g>
+
+        <g class="eco-node node-outer">
+          <circle cx="70" cy="295" r="26" fill="rgba(212,175,55,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+          <text x="70" y="292" text-anchor="middle" fill="#e5e5e5" font-size="10" font-weight="500" font-family="Inter, sans-serif">Hermes</text>
+          <text x="70" y="305" text-anchor="middle" fill="rgba(229,229,229,0.4)" font-size="7" font-family="Inter, sans-serif">docs</text>
+        </g>
+
+        <g class="eco-node node-outer">
+          <circle cx="70" cy="105" r="26" fill="rgba(212,175,55,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+          <text x="70" y="102" text-anchor="middle" fill="#e5e5e5" font-size="10" font-weight="500" font-family="Inter, sans-serif">Apollo</text>
+          <text x="70" y="115" text-anchor="middle" fill="rgba(229,229,229,0.4)" font-size="7" font-family="Inter, sans-serif">governance</text>
+        </g>
+
+        <!-- Floating secondary nodes -->
+        <g class="eco-node node-secondary" opacity="0.5">
+          <circle cx="135" cy="55" r="16" fill="rgba(212,175,55,0.04)" stroke="rgba(212,175,55,0.15)" stroke-width="0.75"/>
+          <text x="135" y="58" text-anchor="middle" fill="rgba(229,229,229,0.5)" font-size="8" font-family="Inter, sans-serif">Conductor</text>
+        </g>
+
+        <g class="eco-node node-secondary" opacity="0.5">
+          <circle cx="275" cy="55" r="16" fill="rgba(212,175,55,0.04)" stroke="rgba(212,175,55,0.15)" stroke-width="0.75"/>
+          <text x="275" y="58" text-anchor="middle" fill="rgba(229,229,229,0.5)" font-size="8" font-family="Inter, sans-serif">Learning</text>
+        </g>
+
+        <g class="eco-node node-secondary" opacity="0.5">
+          <circle cx="135" cy="345" r="16" fill="rgba(212,175,55,0.04)" stroke="rgba(212,175,55,0.15)" stroke-width="0.75"/>
+          <text x="135" y="348" text-anchor="middle" fill="rgba(229,229,229,0.5)" font-size="8" font-family="Inter, sans-serif">Persona</text>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
@@ -33,46 +131,50 @@ import ParticleCanvas from './ParticleCanvas.astro';
     overflow: hidden;
   }
 
-  .hero-content {
+  .hero-grid {
     position: relative;
     z-index: 2;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1100px;
     padding: 2rem;
+    width: 100%;
+  }
+
+  .hero-text {
+    text-align: left;
   }
 
   .hero h1 {
     font-family: 'Philosopher', serif;
-    font-size: clamp(3rem, 10vw, 8rem);
-    letter-spacing: 0.2em;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    letter-spacing: 0.15em;
     font-weight: 700;
-    margin: 0 0 1rem;
+    margin: 0 0 1.5rem;
     line-height: 1.1;
   }
 
-  .hero-value-prop {
+  .hero-headline {
     color: var(--arkos-text, #e5e5e5);
-    font-size: clamp(1.05rem, 2.5vw, 1.3rem);
-    text-wrap: balance;
-    margin: 0 auto 1.5rem;
-    max-width: 600px;
-    line-height: 1.6;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 1rem;
   }
 
-  .hero-tagline {
+  .hero-value-prop {
     color: var(--arkos-text-muted, #a3a3a3);
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    text-wrap: balance;
-    margin: 0 0 2.5rem;
-    max-width: 500px;
-    margin-inline: auto;
-    font-style: italic;
-    letter-spacing: 0.02em;
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    line-height: 1.7;
+    margin: 0 0 2rem;
+    max-width: 480px;
   }
 
   .hero-ctas {
     display: flex;
     gap: 1rem;
-    justify-content: center;
     flex-wrap: wrap;
   }
 
@@ -110,5 +212,94 @@ import ParticleCanvas from './ParticleCanvas.astro';
     color: var(--arkos-gold-bright, #f5d060);
     transform: translateY(-1px);
     box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+  }
+
+  /* Ecosystem diagram */
+  .hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ecosystem-svg {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  .eco-node {
+    transition: opacity 0.3s ease;
+  }
+
+  .node-pulse {
+    animation: nodePulse 3s ease-in-out infinite;
+  }
+
+  /* Pulse lines animate sequentially */
+  .pulse-line {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: linePulse 4s ease-in-out infinite;
+  }
+  .pulse-1 { animation-delay: 0s; }
+  .pulse-2 { animation-delay: 0.6s; }
+  .pulse-3 { animation-delay: 1.2s; }
+  .pulse-4 { animation-delay: 1.8s; }
+  .pulse-5 { animation-delay: 2.4s; }
+  .pulse-6 { animation-delay: 3.0s; }
+
+  @keyframes nodePulse {
+    0%, 100% { r: 32; opacity: 0.2; }
+    50% { r: 38; opacity: 0.05; }
+  }
+
+  @keyframes linePulse {
+    0% { stroke-dashoffset: 200; opacity: 0; }
+    30% { opacity: 1; }
+    60% { stroke-dashoffset: 0; opacity: 1; }
+    80% { opacity: 0; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+
+  /* Slow rotation of secondary nodes */
+  .node-secondary {
+    animation: floatNode 6s ease-in-out infinite;
+  }
+  .node-secondary:nth-child(2) { animation-delay: 2s; }
+  .node-secondary:nth-child(3) { animation-delay: 4s; }
+
+  @keyframes floatNode {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  /* Mobile: stack vertically */
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-text {
+      text-align: center;
+      order: 1;
+    }
+
+    .hero-visual {
+      order: 2;
+    }
+
+    .hero-value-prop {
+      max-width: 100%;
+    }
+
+    .hero-ctas {
+      justify-content: center;
+    }
+
+    .ecosystem-svg {
+      max-width: 300px;
+      opacity: 0.7;
+    }
   }
 </style>
