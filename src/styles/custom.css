@@ -53,10 +53,3 @@ starlight-menu-button + nav a[aria-current='page'],
 .right-sidebar a[aria-current] {
   color: #0a0a0a !important;
 }
-
-/* Match landing page brand font for docs site title */
-.site-title {
-  font-family: 'Philosopher', serif !important;
-  letter-spacing: 0.04em;
-  font-weight: 700;
-}
