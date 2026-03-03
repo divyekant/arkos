@@ -14,6 +14,8 @@ Developer → AI Coding Agent (Claude Code / Cursor / Codex)
     ↓
 Apollo (enforces project conventions)
     ↓
+Kalos (enforces design conventions → tokens, validation, import)
+    ↓
 Conductor (classifies task → selects pipeline → sequences skills)
     ↓
 [Build Phase] → Code written by AI agent
@@ -42,6 +44,8 @@ Learning-Skill (captures failures and fixes for future sessions)
 **Conductor** is the entry point. It reads your task, classifies it (quick fix, feature, complex/0-to-1), and routes it through the right pipeline of skills.
 
 **Apollo** enforces project conventions by injecting them into every agent's instruction file. It works across Claude Code, Cursor, Codex, and other AI tools.
+
+**Kalos** governs design conventions — the visual counterpart to Apollo. Define design tokens once and enforce them across Pencil, Tailwind, and CSS. Can also reverse-engineer tokens from existing code or live URLs.
 
 ### Quality Layer
 **Delphi** generates guided test scenarios (positive, negative, edge, accessibility, security) and can execute them via browser automation.
