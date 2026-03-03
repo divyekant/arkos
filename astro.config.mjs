@@ -42,6 +42,7 @@ export default defineConfig({
                 { slug: 'tools/apollo' },
                 { slug: 'tools/delphi' },
                 { slug: 'tools/hermes' },
+                { slug: 'tools/kalos' },
                 { slug: 'tools/learning-skill' },
                 { slug: 'tools/pencil-prototyping' },
               ],
