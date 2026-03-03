@@ -1,15 +1,16 @@
 ---
 // EcosystemDiagram.astro
-// Animated SVG showing how all 9 Arkos tools connect, with Conductor at the center.
+// Animated SVG showing how all Arkos tools connect, with Conductor at the center.
 
 const tools = [
   { id: 'conductor', label: 'Conductor', letter: 'C', x: 400, y: 250, r: 35, primary: true },
   { id: 'apollo', label: 'Apollo', letter: 'A', x: 150, y: 100, r: 30, primary: false },
   { id: 'hermes', label: 'Hermes', letter: 'H', x: 650, y: 100, r: 30, primary: false },
   { id: 'delphi', label: 'Delphi', letter: 'D', x: 700, y: 250, r: 30, primary: false },
-  { id: 'carto', label: 'Carto', letter: 'C', x: 600, y: 400, r: 30, primary: false },
-  { id: 'memories', label: 'Memories', letter: 'M', x: 400, y: 430, r: 30, primary: false },
-  { id: 'swarmengine', label: 'SwarmEngine', letter: 'S', x: 200, y: 400, r: 30, primary: false },
+  { id: 'pencil', label: 'Pencil', letter: 'P', x: 720, y: 400, r: 28, primary: false },
+  { id: 'carto', label: 'Carto', letter: 'C', x: 560, y: 430, r: 30, primary: false },
+  { id: 'memories', label: 'Memories', letter: 'M', x: 400, y: 460, r: 30, primary: false },
+  { id: 'swarmengine', label: 'SwarmEngine', letter: 'S', x: 240, y: 430, r: 30, primary: false },
   { id: 'personasmith', label: 'PersonaSmith', letter: 'P', x: 100, y: 250, r: 30, primary: false },
   { id: 'learning', label: 'Learning', letter: 'L', x: 400, y: 70, r: 30, primary: false },
 ];
@@ -23,6 +24,8 @@ const connections = [
   { from: 'apollo', to: 'carto', duration: '2.3s' },
   { from: 'carto', to: 'memories', duration: '3.8s' },
   { from: 'delphi', to: 'hermes', duration: '2.6s' },
+  { from: 'conductor', to: 'pencil', duration: '2.7s' },
+  { from: 'pencil', to: 'delphi', duration: '3.3s' },
   { from: 'swarmengine', to: 'personasmith', duration: '3.1s' },
   { from: 'swarmengine', to: 'memories', duration: '2.9s' },
 ];
@@ -39,7 +42,7 @@ const toolMap = Object.fromEntries(tools.map(t => [t.id, t]));
     <div class="ecosystem-diagram-wrap">
       <svg
         class="ecosystem-svg"
-        viewBox="0 0 800 500"
+        viewBox="0 0 800 520"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         aria-label="Ecosystem diagram showing how Arkos tools connect"
@@ -201,6 +204,7 @@ const toolMap = Object.fromEntries(tools.map(t => [t.id, t]));
   .eco-node:nth-child(7) { animation-delay: 1.8s; }
   .eco-node:nth-child(8) { animation-delay: 2.1s; }
   .eco-node:nth-child(9) { animation-delay: 2.4s; }
+  .eco-node:nth-child(10) { animation-delay: 2.7s; }
 
   @keyframes node-pulse {
     0%, 100% { transform: scale(1); }

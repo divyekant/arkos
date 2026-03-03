@@ -5,6 +5,8 @@ description: Local-first dashboard for Claude Code and Codex CLI analytics
 
 > **GitHub:** [divyekant/deck](https://github.com/divyekant/deck)
 
+![Deck Dashboard](/screenshots/deck-dashboard.png)
+
 ## What it does
 
 Deck is a local-first dashboard that reads directly from `~/.claude/projects/` and `~/.codex/` to surface session data, costs, project health, and configuration. No cloud, no database, no telemetry — everything stays on your machine. It provides a single pane of glass for monitoring, analyzing, and managing your AI coding sessions.

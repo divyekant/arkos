@@ -5,6 +5,8 @@ description: Local semantic memory for AI assistants with hybrid BM25+vector sea
 
 > **GitHub:** [divyekant/memories](https://github.com/divyekant/memories)
 
+![Memory Observatory](/screenshots/memories-dashboard.png)
+
 ## What it does
 
 AI assistants lose all context when a session ends. Memories gives them persistent, searchable memory that survives across sessions, projects, and machines. It runs locally as a Docker service, provides sub-50ms hybrid search combining BM25 keyword matching with vector similarity, and works with any AI client that supports MCP or REST.

@@ -5,6 +5,8 @@ description: Intent-aware codebase intelligence for AI assistants
 
 > **GitHub:** [divyekant/carto](https://github.com/divyekant/carto)
 
+![Carto Dashboard](/screenshots/carto-dashboard.png)
+
 ## What it does
 
 Carto scans your codebase, builds a layered semantic index using LLMs, and stores it in Memories for fast retrieval. It produces skill files (`CLAUDE.md`, `.cursorrules`) that give AI coding assistants instant, structured context about your project -- architecture, patterns, conventions, and cross-component wiring.

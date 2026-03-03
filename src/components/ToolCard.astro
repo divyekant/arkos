@@ -5,12 +5,18 @@ interface Props {
   href: string;
   category: string;
   iconPath: string;
+  screenshotPath?: string;
 }
 
-const { name, description, href, category, iconPath } = Astro.props;
+const { name, description, href, category, iconPath, screenshotPath } = Astro.props;
 ---
 
 <a href={href} class="tool-card glow-border spotlight-card holo-tilt cascade-item">
+  {screenshotPath && (
+    <div class="tool-screenshot">
+      <img src={screenshotPath} alt={`${name} dashboard`} loading="lazy" />
+    </div>
+  )}
   <span class="tool-category">{category}</span>
   <div class="tool-icon-area">
     <img src={iconPath} alt={`${name} icon`} width="40" height="40" />
@@ -30,6 +36,27 @@ const { name, description, href, category, iconPath } = Astro.props;
     color: var(--arkos-text, #e5e5e5);
     min-height: 200px;
     transition: transform 0.2s ease-out;
+    overflow: hidden;
+  }
+
+  .tool-screenshot {
+    margin: -1.5rem -1.5rem 1rem -1.5rem;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  }
+
+  .tool-screenshot img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    object-position: top left;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+  }
+
+  .tool-card:hover .tool-screenshot img {
+    opacity: 1;
   }
 
   .tool-card:hover {

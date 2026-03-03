@@ -43,6 +43,7 @@ export default defineConfig({
                 { slug: 'tools/delphi' },
                 { slug: 'tools/hermes' },
                 { slug: 'tools/learning-skill' },
+                { slug: 'tools/pencil-prototyping' },
               ],
             },
             {
