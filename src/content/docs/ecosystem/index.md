@@ -34,9 +34,9 @@ Learning-Skill (captures failures and fixes for future sessions)
 ## Layer Architecture
 
 ### Infrastructure Layer
-**Memories** stores everything. Every other tool reads from or writes to Memories — codebase indexes (Carto), test results (Delphi), learnings (Learning-Skill), project conventions (Apollo).
+**Memories** stores everything. Every other tool reads from or writes to Memories — codebase indexes (Carto), test results (Delphi), learnings (Learning-Skill), project conventions (Apollo). A full CLI, multi-auth with scoped API keys, and NDJSON export/import make it production-ready for teams.
 
-**Carto** builds a 7-layer semantic map of your codebase and stores it in Memories. Other tools query this map to understand code structure without re-reading files.
+**Carto** builds a 7-layer semantic map of your codebase and stores it in Memories. A 15-command CLI with JSON envelope output, interactive setup, and streaming exports lets you script indexing into any workflow.
 
 **SwarmEngine** orchestrates multiple AI agents in parallel or sequential DAGs. Uses PersonaSmith personas to give agents specialized roles.
 
