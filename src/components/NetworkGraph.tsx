@@ -1,52 +1,57 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const NODES = [
-  { id: "memories", label: "Memories", sub: "core", x: 0.5, y: 0.5, size: 70, primary: true },
-  { id: "carto", label: "Carto", sub: "indexing", x: 0.5, y: 0.12, size: 52 },
-  { id: "swarm", label: "Swarm", sub: "orchestration", x: 0.82, y: 0.28, size: 52 },
-  { id: "apollo", label: "Apollo", sub: "governance", x: 0.18, y: 0.28, size: 52 },
-  { id: "delphi", label: "Delphi", sub: "testing", x: 0.78, y: 0.72, size: 52 },
-  { id: "hermes", label: "Hermes", sub: "docs", x: 0.22, y: 0.72, size: 52 },
-  { id: "deck", label: "Deck", sub: "analytics", x: 0.5, y: 0.88, size: 52 },
-  { id: "pencil", label: "Pencil", sub: "design", x: 0.9, y: 0.52, size: 42 },
-  { id: "kalos", label: "Kalos", sub: "governance", x: 0.1, y: 0.52, size: 42 },
-  { id: "argos", label: "Argos", sub: "ops", x: 0.68, y: 0.88, size: 42 },
-  { id: "pheme", label: "Pheme", sub: "notify", x: 0.32, y: 0.88, size: 42 },
-  { id: "conductor", label: "Conductor", sub: "", x: 0.32, y: 0.08, size: 32, secondary: true },
-  { id: "learning", label: "Learning", sub: "", x: 0.72, y: 0.1, size: 32, secondary: true },
-  { id: "persona", label: "Persona", sub: "", x: 0.3, y: 0.92, size: 32, secondary: true },
+  // Primary — still largest but pulled off-center for organic feel
+  { id: "memories", label: "Memories", sub: "core", x: 0.40, y: 0.35, size: 58, primary: true },
+  // Tier 1 — major tools, tighter distribution
+  { id: "carto", label: "Carto", sub: "indexing", x: 0.55, y: 0.13, size: 50 },
+  { id: "swarm", label: "Swarm", sub: "orchestration", x: 0.76, y: 0.28, size: 50 },
+  { id: "apollo", label: "Apollo", sub: "governance", x: 0.20, y: 0.22, size: 50 },
+  { id: "delphi", label: "Delphi", sub: "testing", x: 0.68, y: 0.52, size: 50 },
+  { id: "hermes", label: "Hermes", sub: "docs", x: 0.30, y: 0.58, size: 50 },
+  { id: "deck", label: "Deck", sub: "analytics", x: 0.52, y: 0.72, size: 50 },
+  // Tier 2 — mid-size, fill edges
+  { id: "pencil", label: "Pencil", sub: "design", x: 0.86, y: 0.50, size: 42 },
+  { id: "kalos", label: "Kalos", sub: "governance", x: 0.12, y: 0.48, size: 42 },
+  { id: "argos", label: "Argos", sub: "ops", x: 0.76, y: 0.72, size: 42 },
+  { id: "pheme", label: "Pheme", sub: "notify", x: 0.18, y: 0.76, size: 42 },
+  // Tier 3 — smaller, tuck into gaps
+  { id: "conductor", label: "Conductor", sub: "", x: 0.32, y: 0.10, size: 32, secondary: true },
+  { id: "learning", label: "Learning", sub: "", x: 0.80, y: 0.13, size: 32, secondary: true },
+  { id: "persona", label: "Persona", sub: "", x: 0.42, y: 0.90, size: 32, secondary: true },
 ];
 
 const EDGES: [string, string][] = [
+  // Memories — reduced to key integrations, not hub-and-spoke
   ["memories", "carto"],
-  ["memories", "swarm"],
-  ["memories", "apollo"],
-  ["memories", "delphi"],
   ["memories", "hermes"],
   ["memories", "deck"],
-  ["carto", "swarm"],
+  // Infrastructure mesh
   ["carto", "apollo"],
-  ["swarm", "delphi"],
-  ["apollo", "hermes"],
-  ["hermes", "deck"],
-  ["deck", "delphi"],
+  ["carto", "swarm"],
   ["carto", "conductor"],
   ["carto", "learning"],
-  ["hermes", "persona"],
-  ["apollo", "conductor"],
+  ["swarm", "delphi"],
   ["swarm", "learning"],
-  ["deck", "persona"],
-  ["pencil", "delphi"],
-  ["pencil", "swarm"],
-  ["kalos", "apollo"],
+  ["swarm", "persona"],
+  // Workflow mesh
+  ["apollo", "conductor"],
+  ["apollo", "kalos"],
+  ["apollo", "hermes"],
   ["kalos", "pencil"],
   ["kalos", "hermes"],
-  ["argos", "memories"],
-  ["argos", "delphi"],
+  // Quality mesh
+  ["delphi", "pencil"],
+  ["delphi", "deck"],
+  ["delphi", "argos"],
+  ["hermes", "deck"],
+  ["hermes", "persona"],
+  // Notification + ops mesh
   ["argos", "carto"],
-  ["pheme", "memories"],
-  ["pheme", "argos"],
+  ["argos", "pheme"],
   ["pheme", "hermes"],
+  ["pheme", "memories"],
+  ["deck", "persona"],
 ];
 
 interface NodeState {

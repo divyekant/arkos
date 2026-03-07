@@ -23,7 +23,7 @@ Skills that plug into your coding workflow via Claude Code, Cursor, or Codex.
 - **[Apollo](/tools/apollo/)** — Project governance and conventions
 - **[Delphi](/tools/delphi/)** — Test scenario generation and execution
 - **[Hermes](/tools/hermes/)** — Audience-specific documentation
-- **[Argos](/tools/argos/)** — Autonomous GitHub issue monitoring and action
+- **[Argos](/tools/argos/)** — Zero-cost issue guardian with policy-governed autonomy and 5-level confidence system
 - **[Learning](/tools/learning-skill/)** — Failure capture and cross-session learning
 - **[Kalos](/tools/kalos/)** — Design governance and token enforcement
 - **[Pencil Prototyping](/tools/pencil-prototyping/)** — Visual design prototyping powered by [Pencil.dev](https://pencil.dev)

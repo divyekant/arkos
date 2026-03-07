@@ -37,6 +37,11 @@ const { name, description, href, category, iconPath, screenshotPath } = Astro.pr
     min-height: 200px;
     transition: transform 0.2s ease-out;
     overflow: hidden;
+    will-change: transform;
+  }
+
+  .tool-card > * {
+    pointer-events: none;
   }
 
   .tool-screenshot {
