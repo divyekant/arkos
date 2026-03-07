@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Shield outline -->
+  <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25 5.25-1.1 9-6 9-11.25V7l-9-5z"/>
+  <!-- Watchful eye -->
+  <path d="M8 12s1.5-2.5 4-2.5 4 2.5 4 2.5-1.5 2.5-4 2.5S8 12 8 12z"/>
+  <circle cx="12" cy="12" r="1"/>
+</svg>

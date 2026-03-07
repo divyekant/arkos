@@ -40,6 +40,7 @@ export default defineConfig({
               items: [
                 { slug: 'tools/conductor' },
                 { slug: 'tools/apollo' },
+                { slug: 'tools/argos' },
                 { slug: 'tools/delphi' },
                 { slug: 'tools/hermes' },
                 { slug: 'tools/kalos' },

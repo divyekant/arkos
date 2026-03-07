@@ -10,6 +10,7 @@ const NODES = [
   { id: "deck", label: "Deck", sub: "analytics", x: 0.5, y: 0.88, size: 52 },
   { id: "pencil", label: "Pencil", sub: "design", x: 0.9, y: 0.52, size: 42 },
   { id: "kalos", label: "Kalos", sub: "governance", x: 0.1, y: 0.52, size: 42 },
+  { id: "argos", label: "Argos", sub: "ops", x: 0.68, y: 0.88, size: 42 },
   { id: "conductor", label: "Conductor", sub: "", x: 0.32, y: 0.08, size: 32, secondary: true },
   { id: "learning", label: "Learning", sub: "", x: 0.72, y: 0.1, size: 32, secondary: true },
   { id: "persona", label: "Persona", sub: "", x: 0.3, y: 0.92, size: 32, secondary: true },
@@ -39,6 +40,9 @@ const EDGES: [string, string][] = [
   ["kalos", "apollo"],
   ["kalos", "pencil"],
   ["kalos", "hermes"],
+  ["argos", "memories"],
+  ["argos", "delphi"],
+  ["argos", "carto"],
 ];
 
 interface NodeState {

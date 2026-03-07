@@ -1,6 +1,6 @@
 ---
 title: Tools
-description: The Arkos ecosystem — twelve specialized tools for AI-native development
+description: The Arkos ecosystem — thirteen specialized tools for AI-native development
 ---
 
 # The Arkos Ecosystem
@@ -23,6 +23,7 @@ Skills that plug into your coding workflow via Claude Code, Cursor, or Codex.
 - **[Apollo](/tools/apollo/)** — Project governance and conventions
 - **[Delphi](/tools/delphi/)** — Test scenario generation and execution
 - **[Hermes](/tools/hermes/)** — Audience-specific documentation
+- **[Argos](/tools/argos/)** — Autonomous GitHub issue monitoring and action
 - **[Learning](/tools/learning-skill/)** — Failure capture and cross-session learning
 - **[Kalos](/tools/kalos/)** — Design governance and token enforcement
 - **[Pencil Prototyping](/tools/pencil-prototyping/)** — Visual design prototyping powered by [Pencil.dev](https://pencil.dev)

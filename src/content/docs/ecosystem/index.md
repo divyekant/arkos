@@ -28,6 +28,8 @@ Delphi (generates test scenarios from built software)
     ↓
 Hermes (generates docs for internal, external, marketing audiences)
     ↓
+Argos (monitors repos for issues → triages and acts within policy)
+    ↓
 Learning-Skill (captures failures and fixes for future sessions)
 ```
 
@@ -51,6 +53,8 @@ Learning-Skill (captures failures and fixes for future sessions)
 **Delphi** generates guided test scenarios (positive, negative, edge, accessibility, security) and can execute them via browser automation.
 
 **Hermes** generates documentation for three audiences from a single codebase: internal (CS/Support), external (users/devs), and marketing.
+
+**Argos** watches GitHub repos for new issues and acts within policy-defined boundaries — labeling, triaging, diagnosing, and even opening PRs, all with tiered autonomy (auto/approve/deny) and guardrails.
 
 **Learning-Skill** auto-captures failures and their fixes, storing them in Memories so you never repeat the same mistake across sessions.
 
