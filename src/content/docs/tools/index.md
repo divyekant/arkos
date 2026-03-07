@@ -1,6 +1,6 @@
 ---
 title: Tools
-description: The Arkos ecosystem — thirteen specialized tools for AI-native development
+description: The Arkos ecosystem — fourteen specialized tools for AI-native development
 ---
 
 # The Arkos Ecosystem
@@ -23,7 +23,7 @@ Skills that plug into your coding workflow via Claude Code, Cursor, or Codex.
 - **[Apollo](/tools/apollo/)** — Project governance and conventions
 - **[Delphi](/tools/delphi/)** — Test scenario generation and execution
 - **[Hermes](/tools/hermes/)** — Audience-specific documentation
-- **[Argos](/tools/argos/)** — Autonomous GitHub issue monitoring and action
+- **[Argos](/tools/argos/)** — Zero-cost issue guardian with policy-governed autonomy and 5-level confidence system
 - **[Learning](/tools/learning-skill/)** — Failure capture and cross-session learning
 - **[Kalos](/tools/kalos/)** — Design governance and token enforcement
 - **[Pencil Prototyping](/tools/pencil-prototyping/)** — Visual design prototyping powered by [Pencil.dev](https://pencil.dev)
@@ -33,3 +33,9 @@ Skills that plug into your coding workflow via Claude Code, Cursor, or Codex.
 Building blocks for multi-agent systems.
 
 - **[PersonaSmith](/tools/persona-smith/)** — 75 research-backed AI agent personas
+
+## Utilities
+
+Cross-cutting capabilities used by other tools.
+
+- **[Pheme](/tools/pheme/)** — Universal agent-to-human notifications across 100+ channels, powered by [Apprise](https://github.com/caronc/apprise)

@@ -28,6 +28,8 @@ Delphi (generates test scenarios from built software)
     ↓
 Hermes (generates docs for internal, external, marketing audiences)
     ↓
+Pheme (notifies humans across 100+ channels based on urgency)
+    ↓
 Argos (monitors repos for issues → triages and acts within policy)
     ↓
 Learning-Skill (captures failures and fixes for future sessions)
@@ -60,6 +62,9 @@ Learning-Skill (captures failures and fixes for future sessions)
 
 ### Agent Layer
 **PersonaSmith** provides 75 research-backed AI agent personas across 15 enterprise departments, ready for use with SwarmEngine.
+
+### Utilities Layer
+**Pheme** is the notification backbone. Rather than each tool implementing its own channel integration, Pheme provides a single MCP interface for reaching humans across 100+ channels via [Apprise](https://github.com/caronc/apprise). Urgency-based routing means tools just say "this is critical" and Pheme decides where it goes.
 
 ## Design Principles
 

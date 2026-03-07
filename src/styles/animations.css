@@ -105,6 +105,8 @@
   top: calc(var(--mouse-y, 0) * 1px - 125px);
   left: calc(var(--mouse-x, 0) * 1px - 125px);
   pointer-events: none;
+  z-index: 1;
+  transform: translateZ(0);
 }
 
 .spotlight-card:hover::after {
@@ -114,8 +116,6 @@
 /* Holographic tilt */
 .holo-tilt {
   transition: transform 0.2s ease-out;
-  transform-style: preserve-3d;
-  perspective: 800px;
 }
 
 /* Typing cursor blink */
