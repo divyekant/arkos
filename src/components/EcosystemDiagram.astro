@@ -12,6 +12,7 @@ const tools = [
   { id: 'memories', label: 'Memories', letter: 'M', x: 400, y: 460, r: 30, primary: false },
   { id: 'swarmengine', label: 'SwarmEngine', letter: 'S', x: 240, y: 430, r: 30, primary: false },
   { id: 'personasmith', label: 'PersonaSmith', letter: 'P', x: 100, y: 250, r: 30, primary: false },
+  { id: 'pheme', label: 'Pheme', letter: 'P', x: 80, y: 400, r: 28, primary: false },
   { id: 'learning', label: 'Learning', letter: 'L', x: 400, y: 70, r: 30, primary: false },
 ];
 
@@ -28,6 +29,8 @@ const connections = [
   { from: 'pencil', to: 'delphi', duration: '3.3s' },
   { from: 'swarmengine', to: 'personasmith', duration: '3.1s' },
   { from: 'swarmengine', to: 'memories', duration: '2.9s' },
+  { from: 'conductor', to: 'pheme', duration: '3.4s' },
+  { from: 'pheme', to: 'personasmith', duration: '2.8s' },
 ];
 
 // Build a lookup for tool positions
@@ -205,6 +208,7 @@ const toolMap = Object.fromEntries(tools.map(t => [t.id, t]));
   .eco-node:nth-child(8) { animation-delay: 2.1s; }
   .eco-node:nth-child(9) { animation-delay: 2.4s; }
   .eco-node:nth-child(10) { animation-delay: 2.7s; }
+  .eco-node:nth-child(11) { animation-delay: 3.0s; }
 
   @keyframes node-pulse {
     0%, 100% { transform: scale(1); }

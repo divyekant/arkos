@@ -1,6 +1,6 @@
 ---
 title: Tools
-description: The Arkos ecosystem — thirteen specialized tools for AI-native development
+description: The Arkos ecosystem — fourteen specialized tools for AI-native development
 ---
 
 # The Arkos Ecosystem
@@ -33,3 +33,9 @@ Skills that plug into your coding workflow via Claude Code, Cursor, or Codex.
 Building blocks for multi-agent systems.
 
 - **[PersonaSmith](/tools/persona-smith/)** — 75 research-backed AI agent personas
+
+## Utilities
+
+Cross-cutting capabilities used by other tools.
+
+- **[Pheme](/tools/pheme/)** — Universal agent-to-human notifications across 100+ channels, powered by [Apprise](https://github.com/caronc/apprise)

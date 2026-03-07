@@ -54,6 +54,12 @@ export default defineConfig({
                 { slug: 'tools/persona-smith' },
               ],
             },
+            {
+              label: 'Utilities',
+              items: [
+                { slug: 'tools/pheme' },
+              ],
+            },
           ],
         },
         {
