@@ -17,7 +17,7 @@ AI agents run autonomously but still need to reach humans: approvals, error aler
 - **Zero channel lock-in** — channels are configured via `PHEME_*` env vars, not code
 - **Security built in** — message length caps, secret detection warnings, audit logging
 - **Custom route overrides** — project-level or user-level YAML route configs
-- **Claude Code plugin** — slash commands (`/pheme send`, `/pheme test`, `/pheme-status`) and an agent skill
+- **Claude Code plugin + Codex support** — slash commands (`/pheme send`, `/pheme test`, `/pheme-status`) and an agent skill, with Codex MCP integration
 
 ## How it fits
 

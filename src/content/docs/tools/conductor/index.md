@@ -1,13 +1,13 @@
 ---
 title: Conductor
-description: Skill composition framework for Claude Code with configurable pipelines
+description: Skill composition framework for Claude Code and Codex with configurable pipelines
 ---
 
 > **GitHub:** [divyekant/skill-conductor](https://github.com/divyekant/skill-conductor)
 
 ## What it does
 
-As the Claude Code skill ecosystem grows, you accumulate skills from different sources that conflict, lack sequencing, and require manual wiring. Conductor solves this by reading a `pipelines.yaml` config and routing your task through the right workflow -- classifying the task, selecting the pipeline, sequencing skills through ordered phases, and handling user overrides.
+As the Claude Code and Codex skill ecosystem grows, you accumulate skills from different sources that conflict, lack sequencing, and require manual wiring. Conductor solves this by reading a `pipelines.yaml` config and routing your task through the right workflow -- classifying the task, selecting the pipeline, sequencing skills through ordered phases, and handling user overrides.
 
 ## Key Features
 
@@ -41,6 +41,6 @@ Start a new Claude Code session. The conductor loads automatically and on first 
 
 ## Architecture
 
-The conductor is a Claude Code skill (`skill.md`) that reads `pipelines.yaml` at the start of each session. The YAML config defines available skills (with their sources and types), phases, and named pipelines mapping phases to skill sequences.
+The conductor is a Claude Code / Codex skill (`skill.md`) that reads `pipelines.yaml` at the start of each session. The YAML config defines available skills (with their sources and types), phases, and named pipelines mapping phases to skill sequences.
 
-At runtime, when you describe a task, the conductor classifies it against the defined pipelines, presents the selected workflow for confirmation, then invokes each skill in phase order. Skills can be sourced from the vendor directory (git submodules), external installs, or Claude Code plugins. The `install.sh` script symlinks everything into `~/.claude/skills/`.
+At runtime, when you describe a task, the conductor classifies it against the defined pipelines, presents the selected workflow for confirmation, then invokes each skill in phase order. Skills can be sourced from the vendor directory (git submodules), external installs, or Claude Code plugins. The `install.sh` script symlinks everything into `~/.claude/skills/` (or `~/.agents/skills/` for Codex).

@@ -56,12 +56,17 @@ Learning-Skill (captures failures and fixes for future sessions)
 
 **Hermes** generates documentation for three audiences from a single codebase: internal (CS/Support), external (users/devs), and marketing.
 
-**Argos** watches GitHub repos for new issues and acts within policy-defined boundaries — labeling, triaging, diagnosing, and even opening PRs, all with tiered autonomy (auto/approve/deny) and guardrails.
+**Argos** watches GitHub repos for new issues and acts within policy-defined boundaries — labeling, triaging, diagnosing, and even opening PRs, all governed by a 5-level confidence system (from full autonomy to hands-off) with policy floors and security guardrails.
 
 **Learning-Skill** auto-captures failures and their fixes, storing them in Memories so you never repeat the same mistake across sessions.
 
 ### Agent Layer
 **PersonaSmith** provides 75 research-backed AI agent personas across 15 enterprise departments, ready for use with SwarmEngine.
+
+### Observability Layer
+**Deck** is a local-first dashboard that reads directly from `~/.claude/projects/` and `~/.codex/` to surface session data, costs, project health, and configuration. Live session monitoring, session replay, cost tracking, dependency analysis, security scanning, and config linting — all without any cloud dependency or telemetry.
+
+**Pencil Prototyping** bridges design thinking and implementation. Before writing code, use Pencil.dev to sketch UI layouts, explore component arrangements, and validate visual ideas — all from within a Claude Code session.
 
 ### Utilities Layer
 **Pheme** is the notification backbone. Rather than each tool implementing its own channel integration, Pheme provides a single MCP interface for reaching humans across 100+ channels via [Apprise](https://github.com/caronc/apprise). Urgency-based routing means tools just say "this is critical" and Pheme decides where it goes.

@@ -51,7 +51,7 @@ switch to acme       # Switch active brand palette
 
 ## Architecture
 
-Kalos is a Claude Code skill (Markdown instructions, no runtime code). Config lives in YAML files — `~/.kalos/defaults.yaml` for global preferences, `~/.kalos/templates/` for shared baselines like "modern", "minimal", or "brand", and `.kalos.yaml` per project. The three-tier resolution deep-merges these layers so project-level overrides are surgical.
+Kalos is a Claude Code / Codex skill (Markdown instructions, no runtime code). Config lives in YAML files — `~/.kalos/defaults.yaml` for global preferences, `~/.kalos/templates/` for shared baselines like "modern", "minimal", or "brand", and `.kalos.yaml` per project. The three-tier resolution deep-merges these layers so project-level overrides are surgical.
 
 Adapters handle the bridge between abstract tokens and concrete targets. The Pencil adapter uses MCP tools (`set_variables`, `search_all_unique_properties`) to sync and validate. The Tailwind adapter generates a theme config (`kalos.tailwind.config.ts`) with CSS variable references and a tokens file (`kalos-tokens.css`) with `:root` custom properties. Multi-brand projects get per-brand `[data-brand]` selector blocks. Each adapter is a self-contained section in the skill file — no external dependencies, no build step.
 

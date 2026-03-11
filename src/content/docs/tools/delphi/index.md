@@ -44,6 +44,6 @@ Run P0 guided cases
 
 ## Architecture
 
-Delphi is a Claude Code skill (Markdown instructions, no runtime code). When invoked, it follows a structured workflow: first analyzing the codebase to discover testable surfaces, then presenting a surface map for confirmation, then generating structured Markdown case files to `tests/guided-cases/`.
+Delphi is a Claude Code / Codex skill (Markdown instructions, no runtime code). When invoked, it follows a structured workflow: first analyzing the codebase to discover testable surfaces, then presenting a surface map for confirmation, then generating structured Markdown case files to `tests/guided-cases/`.
 
 Each guided case is a self-contained Markdown file with YAML-style metadata (type, priority, surface, flow), preconditions, numbered steps with expected outcomes, and success criteria checklists. For execution, Delphi walks through each step using the appropriate tool (browser automation for UI, curl/fetch for API, shell commands for CLI) and captures evidence at each step.

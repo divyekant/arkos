@@ -1,13 +1,13 @@
 ---
 title: Pencil Prototyping
-description: Visual design prototyping skill for Claude Code powered by Pencil.dev
+description: Visual design prototyping skill for Claude Code and Codex powered by Pencil.dev
 ---
 
 > **GitHub:** [divyekant/pencil-prototyping](https://github.com/divyekant/pencil-prototyping) | **Powered by:** [Pencil.dev](https://pencil.dev)
 
 ## What it does
 
-Pencil Prototyping is a Claude Code skill that launches [Pencil.dev](https://pencil.dev) and lets you prototype UI designs directly from your coding session. It handles installation, MCP server connection, canvas creation, drawing operations, and screenshot capture — turning Claude Code into a design tool.
+Pencil Prototyping is a Claude Code / Codex skill that launches [Pencil.dev](https://pencil.dev) and lets you prototype UI designs directly from your coding session. It handles installation, MCP server connection, canvas creation, drawing operations, and screenshot capture — turning Claude Code into a design tool.
 
 ## Key Features
 
@@ -23,7 +23,7 @@ Pencil Prototyping bridges the gap between design thinking and implementation. B
 
 ## Usage
 
-Pencil Prototyping is invoked as a Claude Code skill:
+Pencil Prototyping is invoked as a Claude Code or Codex skill:
 
 ```
 /pencil-prototyping

@@ -16,7 +16,10 @@ SwarmEngine lets you define AI agents as nodes, wire them into directed acyclic 
 - **Multi-provider LLM support** — Anthropic, OpenAI, Ollama, and custom adapters via the `ProviderAdapter` interface
 - **Agentic backends** — Nodes can use Claude Code or Codex as backends for real tool use (file I/O, shell commands, web access)
 - **Per-agent and per-swarm cost tracking** — Token usage with configurable budget enforcement and budget warning/exceeded events
-- **Streaming events** — Real-time `AsyncGenerator` yielding typed events (agent_start, agent_chunk, agent_done, route_decision, loop_iteration, etc.)
+- **Handoff templates** — Shape output format between connected nodes using built-in presets (standard, qa-review, qa-feedback, escalation) or custom section-based templates
+- **Feedback edges** — Engine-managed retry loops where reviewer nodes send work back to producers, with iteration tracking, feedback injection, and configurable escalation policies (reroute, halt)
+- **Anti-pattern guards** — Post-completion output quality checks (evidence, scope-creep) in warn or block mode, configurable per-node or engine-wide
+- **Streaming events** — Real-time `AsyncGenerator` yielding typed events (agent_start, agent_chunk, agent_done, route_decision, loop_iteration, feedback_retry, feedback_escalation, guard_warning, guard_blocked, etc.)
 - **Conditional routing** — Route between agents using rules, regex, or LLM-based evaluation
 - **Cancellation** — Pass an `AbortSignal` to cancel a running swarm with partial results
 - **Pluggable adapters** — Persistence, memory, context, codebase, persona, and lifecycle hooks
@@ -61,5 +64,7 @@ for await (const event of engine.run({ dag, task: 'Build a REST API' })) {
 SwarmEngine is a TypeScript-first ESM package. The core DAG builder validates the graph at build time (cycle detection, orphan checks). At runtime, a topological executor walks the DAG, running agents whose dependencies are satisfied. Agents with no dependency between them execute in parallel automatically.
 
 Each agent node wraps an LLM provider call (or an agentic backend like Claude Code/Codex). The provider adapter interface abstracts away LLM differences. Cost tracking aggregates token usage from all nodes, and budget limits can halt execution when thresholds are crossed.
+
+Handoff templates inject formatting instructions into producing agents so downstream nodes receive structured output. Feedback edges create engine-managed retry loops: a reviewer node can reject output and send it back to the producer with feedback injected into context, up to a configurable max retries, with escalation (reroute to a senior agent, or halt) when retries are exhausted. Anti-pattern guards run after node completion and check output quality — in warn mode they emit an event and continue, in block mode they reject the output.
 
 All execution produces a stream of typed events via `AsyncGenerator`, making it straightforward to build UIs, loggers, or dashboards on top.

@@ -47,7 +47,7 @@ Generate release docs for v2.0
 
 ## Architecture
 
-Hermes is a Claude Code skill split for efficient context usage: a main `skill.md` (orchestration logic, always loaded) plus per-audience template files (`internal.md`, `external.md`, `marketing.md`) loaded only when generating for that audience. Single-audience runs use roughly half the context of a full generation.
+Hermes is a Claude Code / Codex skill split for efficient context usage: a main `skill.md` (orchestration logic, always loaded) plus per-audience template files (`internal.md`, `external.md`, `marketing.md`) loaded only when generating for that audience. Single-audience runs use roughly half the context of a full generation.
 
 The skill operates in three modes: Generate (full project documentation), Update (delta since last generation), and single-audience mode. It uses a tiered source system -- Carto index (best quality, function-level understanding), direct codebase reading (works for any project), and context files (PRDs, specs) -- falling back gracefully if higher-tier sources are unavailable.
 

@@ -84,4 +84,4 @@ Argos walks you through guided onboarding and starts monitoring.
 - **jq** — JSON processor
 - **python3** + **pyyaml** — YAML policy parsing
 - **Memories MCP** — Cross-session learning
-- **Claude Code** — Runtime environment
+- **Claude Code or Codex** — Runtime environment

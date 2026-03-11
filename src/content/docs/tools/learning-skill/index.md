@@ -1,6 +1,6 @@
 ---
 title: Learning
-description: Failure capture and cross-session learning for Claude Code
+description: Failure capture and cross-session learning for Claude Code and Codex
 ---
 
 > **GitHub:** [divyekant/learning-skill](https://github.com/divyekant/learning-skill)
@@ -40,6 +40,6 @@ Restart Claude Code. The skill activates automatically when Claude encounters a 
 
 ## Architecture
 
-The Learning skill has two layers. The real-time layer is a Claude Code skill (`SKILL.md`) that instructs Claude to recognize failure-to-fix patterns during a session and record them using a structured schema. The safety-net layer is a Stop hook (`learning-extract.sh`) that runs at session end, analyzing the full transcript for patterns that were not captured during the session.
+The Learning skill has two layers. The real-time layer is a Claude Code / Codex skill (`SKILL.md`) that instructs Claude to recognize failure-to-fix patterns during a session and record them using a structured schema. The safety-net layer is a Stop hook (`learning-extract.sh`) that runs at session end, analyzing the full transcript for patterns that were not captured during the session.
 
 Storage uses either auto-memory files (`learnings.md` for active learnings, `learnings-archive.md` for superseded ones) or the Memories MCP server. With Memories, deduplication and reconciliation are handled by the API. With files, the skill manages its own supersession logic, moving outdated entries to the archive when better fixes are found.

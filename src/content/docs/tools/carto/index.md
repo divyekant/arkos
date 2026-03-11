@@ -9,7 +9,7 @@ description: Intent-aware codebase intelligence with CLI and web dashboard
 
 ## What it does
 
-Carto scans your codebase, builds a layered semantic index using LLMs, and stores it in Memories for fast retrieval. A full CLI with TTY-aware output, JSON envelope contract, and 15 commands covers everything from interactive setup to streaming exports. It produces skill files (`CLAUDE.md`, `.cursorrules`) that give AI coding assistants instant, structured context about your project -- architecture, patterns, conventions, and cross-component wiring.
+Carto scans your codebase, builds a layered semantic index using LLMs, and stores it in Memories for fast retrieval. A full CLI with TTY-aware output, JSON envelope contract, and 15 commands covers everything from interactive setup to streaming exports. It produces skill files (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`) that give AI coding assistants — Claude Code, Codex, Cursor, and others — instant, structured context about your project — architecture, patterns, conventions, and cross-component wiring.
 
 ## Key Features
 
