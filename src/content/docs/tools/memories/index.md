@@ -1,30 +1,39 @@
 ---
 title: Memories
-description: Local semantic memory for AI assistants with hybrid search, CLI, multi-auth, and a built-in dashboard
+description: Self-hosted semantic memory for AI assistants with 5-signal hybrid search, operator workbench, lifecycle policies, and audit trail
 ---
 
-> **GitHub:** [divyekant/memories](https://github.com/divyekant/memories)
+> **GitHub:** [divyekant/memories](https://github.com/divyekant/memories) · **Website:** [memories.divyekant.com](https://memories.divyekant.com)
 
 ![Memory Observatory](/screenshots/memories-dashboard.png)
 
 ## What it does
 
-AI assistants lose all context when a session ends. Memories gives them persistent, searchable memory that survives across sessions, projects, and machines. It runs locally as a Docker service, provides sub-50ms hybrid search combining BM25 keyword matching with vector similarity, and works with any AI client that supports MCP or REST. A full CLI with 30+ commands provides terminal-native access to every API endpoint with TTY-aware output. Multi-auth with prefix-scoped API keys lets teams share a single Memories instance with isolated access. A bundled Memories Skill teaches Claude Code disciplined memory capture — when to store, when to recall, and when to clean up — while the Web Dashboard provides a full management interface for browsing, searching, and monitoring memory usage.
+AI assistants lose all context when a session ends. Memories gives them persistent, searchable memory that survives across sessions, projects, and machines. It runs locally as a Docker service, provides sub-50ms hybrid search fusing five signals (BM25 keyword, vector similarity, recency, feedback, confidence), and works with any AI client that supports MCP or REST — Claude Code, Claude Desktop, Claude Chat, Codex, Cursor, ChatGPT, OpenClaw, and anything that can call HTTP.
+
+An operator workbench lets you create, edit, merge, and bulk-manage memories with dry-run extraction, per-fact approval, and conflict resolution. Lifecycle policies enforce per-prefix TTL and confidence-based auto-archive with operator-visible evidence. A full audit trail tracks every mutation with lifecycle timelines and evidence strength badges. Quality benchmarks via a LongMemEval eval harness provide regression tracking per release.
+
+A full CLI with 30+ commands provides terminal-native access to every API endpoint with TTY-aware output. Multi-auth with prefix-scoped API keys lets teams share a single instance with isolated access. A bundled Memories Skill teaches Claude Code disciplined memory capture — when to store, when to recall, and when to clean up — while the Web Dashboard provides a full management interface.
 
 ## Key Features
 
-- **Hybrid search** — BM25 keyword + vector similarity with Reciprocal Rank Fusion, under 50ms
+- **5-signal hybrid search** — BM25 keyword + vector similarity + recency + feedback + confidence, fused with Reciprocal Rank Fusion, under 50ms
+- **Operator workbench** — Create, inline edit, merge, pin/archive with undo, bulk actions (archive/delete/retag/re-source/merge), extraction trigger with dry-run preview and per-fact approve/reject
+- **Feedback-weighted ranking** — Search learns from `useful`/`not_useful` signals over time
+- **Lifecycle policies** — Per-prefix TTL and confidence-based auto-archive with operator-visible evidence
+- **Full audit trail** — Every mutation tracked, lifecycle timeline in UI, evidence strength badges
+- **Quality benchmarks** — LongMemEval eval harness with regression tracking per release
+- **Conflict resolution** — Detects contradictory memories with Keep A / Keep B / Merge / Defer options and soft archive
 - **AUDN extraction pipeline** — Automatically classifies facts as Add, Update, Delete, or Noop to keep memory clean over time
-- **Memories Skill** — Bundled Claude Code skill with three responsibilities: Read (proactive recall before questions), Write (hybrid `memory_add` + `memory_extract` for intelligent storage), and Maintain (AUDN-driven lifecycle cleanup). +43% eval improvement over baseline
-- **`memory_extract` tool** — Synchronous MCP tool that analyzes conversations and classifies facts through the AUDN loop before storing, handling adds, updates, and deletions in a single call
-- **Web Dashboard** — Full management UI at `/ui` with sidebar navigation, usage analytics, list+detail and grid views, source filtering, dark/light theme, API key management, and responsive mobile layout
+- **Memories Skill** — Bundled Claude Code skill with three responsibilities: Read (proactive recall), Write (hybrid `memory_add` + `memory_extract`), and Maintain (AUDN-driven lifecycle cleanup). +43% eval improvement over baseline
+- **`memory_extract` tool** — Synchronous MCP tool that analyzes conversations and classifies facts through the AUDN loop before storing
+- **Web Dashboard** — Dashboard (stats, extraction metrics, server info), Memories (tabbed detail: Overview / Lifecycle / Links), Extractions, Health (conflicts, problem queries, stale memories), API Keys, Settings — dark/light/system theme
 - **Multi-auth** — Prefix-scoped API keys with three role tiers (read-only, read-write, admin) for team-safe shared instances
-- **Key management** — 5 REST endpoints for creating, listing, updating, and revoking API keys, plus a Web UI management page
-- **Full CLI** — 30+ commands covering every API endpoint with TTY auto-detection, layered config (flags > config file > env vars > defaults), shell completion, stdin support, and batch operations
-- **NDJSON export/import** — Stream your entire memory store as newline-delimited JSON with source remapping for backup, migration, or cross-instance sync
-- **Multi-client support** — MCP for Claude Code, Cursor, Codex; REST API for ChatGPT, OpenClaw, and anything else
+- **Full CLI** — 30+ commands with TTY auto-detection, layered config (flags > config file > env vars > defaults), shell completion, batch operations, and JSON/pretty output modes
+- **Multi-client support** — MCP for Claude Code, Claude Desktop, Codex, Cursor; REST API for ChatGPT, Claude Chat, OpenClaw, and anything else
 - **Automatic memory hooks** — 5-event lifecycle (session start, prompt, response, pre-compact, session end) for hands-free memory management
 - **Novelty detection** — Checks if information is already known before storing, preventing duplicates
+- **NDJSON export/import** — Filtered export with date ranges, smart dedup import, source remapping for migration or cross-instance sync
 - **Auto-backups** — Snapshots after every write, with optional cron and Google Drive/S3 off-site backup
 - **ONNX Runtime inference** — Same model quality as PyTorch (all-MiniLM-L6-v2) in a 68% smaller Docker image
 - **Extraction providers** — Anthropic, OpenAI, ChatGPT Subscription, Ollama, or skip entirely
@@ -58,19 +67,42 @@ curl -X POST http://localhost:8900/search \
 memories add "Always use TypeScript strict mode" --source standards.md
 memories search "TypeScript config" --hybrid
 memories list --source standards.md
-memories export --format ndjson > backup.ndjson
+memories export -o backup.jsonl
 ```
 
-The service runs at `http://localhost:8900`. API docs at `/docs`, memory browser at `/ui`.
+The service runs at `http://localhost:8900`. API docs at `/docs`, web dashboard at `/ui`.
 
 ## Architecture
 
-Memories runs as a FastAPI service inside Docker. Clients connect via MCP protocol (Claude Code, Codex, Cursor), REST API (everything else), or the CLI. The MCP server is a thin Node.js wrapper that translates MCP tool calls into REST requests. The CLI provides 30+ commands with TTY-aware output and layered configuration (CLI flags > config file > env vars > defaults).
+```
+AI Client (Claude Code, Claude Desktop, Codex, Cursor, ChatGPT, OpenClaw)
+    |
+    |-- MCP protocol (Claude Code / Desktop / Codex / Cursor)
+    |-- REST API (everything else)
+    v
+MCP Server (mcp-server/index.js)
+    |
+    v
+Memories Service (Docker :8900)
+    |-- FastAPI REST API
+    |-- Hybrid Search (vector + BM25, 5-signal RRF fusion)
+    |-- Markdown-aware chunking
+    |-- Event Bus (SSE stream + webhook delivery)
+    |-- Audit Log (append-only trail)
+    |-- Memory Relationships (graph edges between memories)
+    |-- Confidence Decay (time-based relevance attenuation)
+    |-- Auto-backups
+    v
+Persistent Storage (data/)
+    |-- Qdrant vector store (embeddings + metadata)
+    |-- metadata.json (memory text + metadata)
+    |-- backups/ (auto, keeps last 10)
+```
 
 Multi-auth middleware enforces prefix-scoped API keys at three tiers: read-only (search and list within allowed prefixes), read-write (add, update, delete within allowed prefixes), and admin (full access including key management, backups, and usage stats).
 
-Internally, the engine maintains a vector index (ONNX Runtime embeddings) alongside a BM25 keyword index. Search queries hit both and results are fused using Reciprocal Rank Fusion. All data is persisted to disk as `vector_index.bin` + `metadata.json` with automatic backups after every write.
+The engine maintains a Qdrant vector store alongside a BM25 keyword index. Search queries hit both and results are fused using 5-signal Reciprocal Rank Fusion (BM25, vector, recency, feedback, confidence). An event bus streams mutations via SSE and webhooks. An append-only audit log tracks every change with evidence strength badges.
 
-The optional extraction pipeline uses an LLM (Anthropic, OpenAI, Ollama, or ChatGPT Subscription) to analyze conversation transcripts and classify facts through the AUDN loop before storing them.
+The optional extraction pipeline uses an LLM (Anthropic, OpenAI, Ollama, or ChatGPT Subscription) to analyze conversation transcripts and classify facts through the AUDN loop before storing them. Lifecycle policies enforce per-prefix TTL and confidence-based auto-archive.
 
 The Memories Skill is the Claude Code integration layer. It wraps the MCP tools with a disciplined workflow: proactively searching memories before asking clarifying questions, using `memory_add` for simple novel facts and `memory_extract` for complex multi-fact conversations or lifecycle decisions (updates, deletions, reversals). Source prefixes like `claude-code/{project}` and `learning/{project}` keep memories organized across projects.
