@@ -38,7 +38,7 @@ Learning-Skill (captures failures and fixes for future sessions)
 ## Layer Architecture
 
 ### Infrastructure Layer
-**Memories** stores everything. Every other tool reads from or writes to Memories — codebase indexes (Carto), test results (Delphi), learnings (Learning-Skill), project conventions (Apollo). 5-signal hybrid search (BM25, vector, recency, feedback, confidence), an operator workbench with bulk actions and conflict resolution, lifecycle policies with per-prefix TTL and confidence-based auto-archive, a full audit trail, and quality benchmarks via LongMemEval make it production-ready for teams.
+**Memories** stores everything. Every other tool reads from or writes to Memories — codebase indexes (Carto), test results (Delphi), learnings (Learning-Skill), project conventions (Apollo). Multi-backend routing lets a single agent session search multiple instances in parallel with scenario-based config and provenance tracking. 5-signal hybrid search (BM25, vector, recency, feedback, confidence), an operator workbench with bulk actions and conflict resolution, lifecycle policies with per-prefix TTL and confidence-based auto-archive, a full audit trail, and quality benchmarks via LongMemEval make it production-ready for teams.
 
 **Carto** builds a 7-layer semantic map of your codebase and stores it in Memories. A 15-command CLI with JSON envelope output, interactive setup, and streaming exports lets you script indexing into any workflow.
 

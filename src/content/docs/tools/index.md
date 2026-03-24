@@ -11,7 +11,7 @@ Arkos is a collection of specialized dev tools that handle everything around cod
 
 The foundation layer. These tools store, index, and orchestrate.
 
-- **[Memories](/tools/memories/)** — Self-hosted semantic memory with 5-signal hybrid search, operator workbench, lifecycle policies, and audit trail
+- **[Memories](/tools/memories/)** — Self-hosted semantic memory with multi-backend routing, 5-signal hybrid search, operator workbench, lifecycle policies, and audit trail
 - **[Carto](/tools/carto/)** — Codebase intelligence with 15-command CLI and web dashboard
 - **[SwarmEngine](/tools/swarm-engine/)** — Multi-agent DAG orchestration
 

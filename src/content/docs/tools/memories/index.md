@@ -1,6 +1,6 @@
 ---
 title: Memories
-description: Self-hosted semantic memory for AI assistants with 5-signal hybrid search, operator workbench, lifecycle policies, and audit trail
+description: Self-hosted semantic memory for AI assistants with multi-backend routing, 5-signal hybrid search, operator workbench, lifecycle policies, and audit trail
 ---
 
 > **GitHub:** [divyekant/memories](https://github.com/divyekant/memories) · **Website:** [memories.divyekant.com](https://memories.divyekant.com)
@@ -11,12 +11,15 @@ description: Self-hosted semantic memory for AI assistants with 5-signal hybrid 
 
 AI assistants lose all context when a session ends. Memories gives them persistent, searchable memory that survives across sessions, projects, and machines. It runs locally as a Docker service, provides sub-50ms hybrid search fusing five signals (BM25 keyword, vector similarity, recency, feedback, confidence), and works with any AI client that supports MCP or REST — Claude Code, Claude Desktop, Claude Chat, Codex, Cursor, ChatGPT, OpenClaw, and anything that can call HTTP.
 
+Multi-backend routing lets a single agent session talk to multiple Memories instances simultaneously. Configure scenario-based routing (dev+prod, personal+shared, or single instance) via `~/.config/memories/backends.yaml`, with parallel search fan-out, exact-text dedup, and `_backend` provenance tags on every result. Extract routing directs new memories to the right instance automatically. No config file means env-var mode — fully backward compatible.
+
 An operator workbench lets you create, edit, merge, and bulk-manage memories with dry-run extraction, per-fact approval, and conflict resolution. Lifecycle policies enforce per-prefix TTL and confidence-based auto-archive with operator-visible evidence. A full audit trail tracks every mutation with lifecycle timelines and evidence strength badges. Quality benchmarks via a LongMemEval eval harness provide regression tracking per release.
 
 A full CLI with 30+ commands provides terminal-native access to every API endpoint with TTY-aware output. Multi-auth with prefix-scoped API keys lets teams share a single instance with isolated access. A bundled Memories Skill teaches Claude Code disciplined memory capture — when to store, when to recall, and when to clean up — while the Web Dashboard provides a full management interface.
 
 ## Key Features
 
+- **Multi-backend routing** — One agent session searches multiple Memories instances in parallel with scenario-based config (dev+prod, personal+shared, single), exact-text dedup, `_backend` provenance tags, and extract routing — fully backward compatible
 - **5-signal hybrid search** — BM25 keyword + vector similarity + recency + feedback + confidence, fused with Reciprocal Rank Fusion, under 50ms
 - **Operator workbench** — Create, inline edit, merge, pin/archive with undo, bulk actions (archive/delete/retag/re-source/merge), extraction trigger with dry-run preview and per-fact approve/reject
 - **Feedback-weighted ranking** — Search learns from `useful`/`not_useful` signals over time
@@ -81,9 +84,10 @@ AI Client (Claude Code, Claude Desktop, Codex, Cursor, ChatGPT, OpenClaw)
     |-- REST API (everything else)
     v
 MCP Server (mcp-server/index.js)
-    |
+    |-- Multi-backend proxy routing (Promise.allSettled fan-out)
+    |-- backends.yaml config (scenario routing, env var interpolation)
     v
-Memories Service (Docker :8900)
+Memories Service(s) (Docker :8900, or multiple instances)
     |-- FastAPI REST API
     |-- Hybrid Search (vector + BM25, 5-signal RRF fusion)
     |-- Markdown-aware chunking
@@ -98,6 +102,8 @@ Persistent Storage (data/)
     |-- metadata.json (memory text + metadata)
     |-- backups/ (auto, keeps last 10)
 ```
+
+Multi-backend routing is handled at the MCP server layer. The proxy reads `~/.config/memories/backends.yaml` and fans out search requests to all configured backends using `Promise.allSettled()`, deduplicates results by exact text match, and tags each result with its `_backend` provenance. Extract routing directs new memories to the appropriate backend based on scenario config. Three built-in scenarios cover common setups: dev+prod (search both, extract to dev), personal+shared (search both, extract to personal), and single instance (default). Environment variable interpolation keeps API keys out of config files. No config file means env-var mode with unchanged behavior — fully backward compatible.
 
 Multi-auth middleware enforces prefix-scoped API keys at three tiers: read-only (search and list within allowed prefixes), read-write (add, update, delete within allowed prefixes), and admin (full access including key management, backups, and usage stats).
 
