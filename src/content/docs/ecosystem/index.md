@@ -44,6 +44,17 @@ Learning-Skill (captures failures and fixes for future sessions)
 
 **SwarmEngine** orchestrates multiple AI agents in parallel or sequential DAGs. Uses PersonaSmith personas to give agents specialized roles.
 
+**Relay** connects separate Claude Code and Codex sessions. Sessions discover each other, pair across machines, and exchange signed messages with durable delivery receipts. There is no central server.
+
+### Orchestration Layer
+**Olympus** runs one goal from spec to merge through a fixed graph of sixteen roles. Each role works in a fresh session, and only accepted evidence moves between roles. It is Markdown and Git only.
+
+**Crew** makes the session model the controller of a build. It splits work by domain, sends each part to the worker model for that domain, and reviews every diff before it integrates the result.
+
+**Metron** meters tokens per pull request. It attributes every usage event to a PR or marks it as unattributed, and it reconciles the totals against provider billing.
+
+**codex-cu** gives Claude Code the Codex computer-use runtime, so Claude can control Chrome, the Codex in-app browser, and macOS apps.
+
 ### Workflow Layer
 **Conductor** is the entry point. It reads your task, classifies it (quick fix, feature, complex/0-to-1), and routes it through the right pipeline of skills.
 
@@ -59,6 +70,14 @@ Learning-Skill (captures failures and fixes for future sessions)
 **Argos** watches GitHub repos for new issues and acts within policy-defined boundaries — labeling, triaging, diagnosing, and even opening PRs, all governed by a 5-level confidence system (from full autonomy to hands-off) with policy floors and security guardrails.
 
 **Learning-Skill** auto-captures failures and their fixes, storing them in Memories so you never repeat the same mistake across sessions.
+
+**Resilience** adds failure thinking to specs, implementation, reviews, and incidents: degraded behavior, blast radius, recovery, and fixes at the smallest proven boundary.
+
+**UI-Val** captures screenshots at three viewports so the agent can check its own UI with its own vision against a 12-point rubric.
+
+**Deep Research** runs parallel web research with query variance, reads full pages, and writes findings with confidence-tagged citations.
+
+**Think Different** reframes a problem when the direct approach stalls, and returns two or three ranked alternative paths.
 
 ### Agent Layer
 **PersonaSmith** provides 75 research-backed AI agent personas across 15 enterprise departments, ready for use with SwarmEngine.

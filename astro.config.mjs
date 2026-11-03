@@ -33,6 +33,16 @@ export default defineConfig({
                 { slug: 'tools/carto' },
                 { slug: 'tools/swarm-engine' },
                 { slug: 'tools/deck' },
+                { slug: 'tools/relay' },
+              ],
+            },
+            {
+              label: 'Orchestration',
+              items: [
+                { slug: 'tools/olympus' },
+                { slug: 'tools/crew' },
+                { slug: 'tools/metron' },
+                { slug: 'tools/codex-cu' },
               ],
             },
             {
@@ -46,6 +56,10 @@ export default defineConfig({
                 { slug: 'tools/kalos' },
                 { slug: 'tools/learning-skill' },
                 { slug: 'tools/pencil-prototyping' },
+                { slug: 'tools/resilience' },
+                { slug: 'tools/ui-val' },
+                { slug: 'tools/deep-research' },
+                { slug: 'tools/think-different' },
               ],
             },
             {

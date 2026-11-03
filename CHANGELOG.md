@@ -5,6 +5,17 @@ All notable changes to Arkos will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Tool pages for Relay, Olympus, Crew, Metron, codex-cu, Resilience, UI-Val, Deep Research, and Think Different
+- New "Orchestration" sidebar group and ecosystem layer
+- Homepage cards and icons for the nine new tools
+
+### Changed
+- Tool count on the homepage and tools index changed from fourteen to twenty-three
+- Tools index now lists Deck
+
 ## [0.1.0] - 2026-03-01
 
 ### Added

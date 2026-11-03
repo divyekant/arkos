@@ -100,13 +100,76 @@ const tools = [
     href: '/tools/pheme/',
     iconPath: '/tool-icons/pheme.svg',
   },
+  {
+    name: 'Relay',
+    description: 'Peer-to-peer messaging between Claude Code and Codex sessions. Signed messages, durable delivery, no hub, no cloud.',
+    category: 'Infrastructure',
+    href: '/tools/relay/',
+    iconPath: '/tool-icons/relay.svg',
+  },
+  {
+    name: 'Olympus',
+    description: 'Markdown-only build system for agent-led development. One fixed graph, sixteen roles, bounded review.',
+    category: 'Orchestration',
+    href: '/tools/olympus/',
+    iconPath: '/tool-icons/olympus.svg',
+  },
+  {
+    name: 'Crew',
+    description: 'Multi-model build orchestrator. The session model leads, domain workers build, every diff gets reviewed.',
+    category: 'Orchestration',
+    href: '/tools/crew/',
+    iconPath: '/tool-icons/crew.svg',
+  },
+  {
+    name: 'Metron',
+    description: 'Token metering per PR for coding agents. Attribution ledger and billing reconciliation.',
+    category: 'Orchestration',
+    href: '/tools/metron/',
+    iconPath: '/tool-icons/metron.svg',
+  },
+  {
+    name: 'codex-cu',
+    description: 'The Codex computer-use runtime inside Claude Code. Drive Chrome, the in-app browser, and macOS apps.',
+    category: 'Orchestration',
+    href: '/tools/codex-cu/',
+    iconPath: '/tool-icons/codex-cu.svg',
+  },
+  {
+    name: 'Resilience',
+    description: 'Agent skill for systems where failures cross component boundaries. Contain failure at the smallest proven boundary.',
+    category: 'Dev Workflow',
+    href: '/tools/resilience/',
+    iconPath: '/tool-icons/resilience.svg',
+  },
+  {
+    name: 'UI-Val',
+    description: 'Give agents eyes. Screenshots at three viewports, checked against a 12-point visual rubric.',
+    category: 'Dev Workflow',
+    href: '/tools/ui-val/',
+    iconPath: '/tool-icons/ui-val.svg',
+  },
+  {
+    name: 'Deep Research',
+    description: 'Parallel web research with query variance, full-page reads, and confidence-tagged citations.',
+    category: 'Dev Workflow',
+    href: '/tools/deep-research/',
+    iconPath: '/tool-icons/deep-research.svg',
+  },
+  {
+    name: 'Think Different',
+    description: 'On-demand lateral thinking. Diagnoses the block, reframes, and ranks two or three new paths.',
+    category: 'Dev Workflow',
+    href: '/tools/think-different/',
+    iconPath: '/tool-icons/think-different.svg',
+  },
 ];
 ---
 
 <section class="showcase scroll-reveal">
   <div class="showcase-inner">
     <h2 class="showcase-heading">The Ecosystem</h2>
-    <p class="showcase-subtitle">Fourteen tools. One mission. Ship better software.</p>
+    <p class="showcase-subtitle">Twenty-three tools. One mission. Ship better software.</p>
 
     <div class="showcase-grid">
       {tools.map((tool) => (
