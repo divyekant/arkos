@@ -22,9 +22,9 @@ Relay lets local AI coding sessions find each other and send messages. A Claude 
 
 | Receiver | Mode | Behavior |
 |---|---|---|
-| Claude Code | Push | Native `<channel source="relay">` notification |
+| Claude Code | Push | Native `<channel source="relay">` notification. Needs the `--dangerously-load-development-channels` flag. |
 | Codex CLI | Poll | The agent calls `relay_check_messages` |
-| Codex CLI | Native socket | Relay writes JSONL to the Codex TUI inbound socket (`codex-relay` launcher) |
+| Codex CLI | Native socket | Relay writes JSONL to the Codex TUI inbound socket (`codex-relay` launcher). Needs a Codex build that supports `--experimental-inbound-channel`. |
 
 ## How it fits
 

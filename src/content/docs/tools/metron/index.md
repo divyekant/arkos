@@ -39,7 +39,7 @@ Install the collector on each developer machine:
 npx metron install --server https://metron.your-org.com --token <org-token> --user you@your-org.com
 ```
 
-`metron doctor` checks the hooks and the server connection. `metron uninstall` removes the hooks.
+`npx metron doctor` checks the hooks and the server connection. `npx metron uninstall` removes the hooks.
 
 ## Accuracy
 
